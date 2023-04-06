@@ -1,4 +1,23 @@
-# CloudLab Software Development Kit (SDK): A little background
+# The CloudLab Software Development Kit (SDK) <!-- omit in toc -->
+This project refers to a SDK used to build SaaS and Micro-SaaS for cloud platforms, especially for Microsoft Azure, using dotnet, netcore and C#.
+
+# Table of Contents <!-- omit in toc -->
+
+- [Background and the Vision](#background-and-the-vision)
+- [The SaaS Building Blocks](#the-saas-building-blocks)
+  - [Concepts](#concepts)
+  - [Features](#features)
+  - [Packages and documentation](#packages-and-documentation)
+- [TL;DR: Quickstart](#tldr-quickstart)
+- [Samples](#samples)
+- [Contributors](#contributors)
+- [Acknowledgement](#acknowledgement)
+    - [From contributor: Eric Roberto Darruiz - @edarruiz](#from-contributor-eric-roberto-darruiz---edarruiz)
+- [Roadmap](#roadmap)
+- [License](#license)
+
+
+## Background and the Vision 
 CloudLab is a cloud-first company. As our name suggests, we not only love, but we heavily rely on the cloud architecture foundations and concepts to create rich, easy to maintain and scalable applications that will run on cloud platforms (like Azure).
 
 Over the years, we've used a lot of open-source and proprietary SDKs and frameworks to develop our applications, even when the cloud did not exist yet. With the evolutions of software development presented with cloud computing platforms technology, sometimes we feel we fell behind in creating good solutions, most of the times because of the dependencies created in this 3rd party SDKs and frameworks.
@@ -13,8 +32,8 @@ The CloudLab SDK is about this concept and about this specific needs. Inside thi
 
 The whole code is fully documented, so you can find out very quickly what the implementation is all about.
 
-## Introduction: The SaaS Building Blocks
-Every SaaS (Software-as-a-Service) has it's own features, it's own goals and it's own market. The concept of SaaS itself it's pretty simple: *it's a software distribution model in which a cloud provider hosts applications and makes them available to end users over the internet.*
+## The SaaS Building Blocks
+Every **SaaS** (Software-as-a-Service) has it's own features, it's own goals and it's own market. The concept of SaaS itself it's pretty simple: *it's a software distribution model in which a cloud provider hosts applications and makes them available to end users over the internet.*
 
 Over the time, some problems went big, and some problems went small. With the market niches all over the world and all big markets, a new concept was brought to us: the **Micro-SaaS**. The main difference shows itself from its monetary and company size point of view, where *Micro-SaaS is a small, self-funded software venture, run by one or two developers, that addresses a specific need. A micro-SaaS follows a service model (Software as a Service), with recurring payments (subscriptions) from hundreds or a few thousand customers.*
 
@@ -37,38 +56,54 @@ Finally, every concept implemented is designed to be available in smaller buildi
 Reuse, share, improve: this is the goal, this is the vision behind the concept of this SDK.
 
 ### Concepts
-TODO
+On the [Concepts page][concepts_doc] you can find all the cloud concepts behind every and each dotnet implementation, where you can better understand the exact reasons, decisions and objectives which particular building block are aiming.
 
 ### Features
-TODO
+On the [Features page][features_doc] you can find a list of all features implemented from the [cloud concepts][concepts_doc].
 
-### Packages
-TODO
+### Packages and documentation
+In this repository you will find the following packages:
 
-### Namespaces
-TODO
+- [CloudLab.SDK][sdk_doc]: The core building blocks, all the implementation bread and butter
+  - This is the main package where all the core implementations are located. All other packages available and deployed from this repository  depend upon this one.
+- [CloudLab.SDK.MongoDB][mongodb_doc]: The MongoDB NoSQL building blocks
+  - This is the package where you can find wrappers to deal with MongoDB operations through [MongoDB.Driver][nuget_mongodb], version ![mongodb_nugetversion][mongodb_ver_shield].
 
-## Quickstart
-TODO
+## TL;DR: Quickstart
+On the [Quickstart page][quickstart_doc] you can find how to start using the CloudLab packages, how to install and configure them for immediate use.
 
 ## Samples
-TODO
+On the [Samples page[samples_doc]] you can find samples, use cases and usage examples for every building block existing in the packages
 
 ## Contributors
-TODO
+If you want to contribute with this project, please read the [contribution guidelines][contributing].
 
-## Documentation
-TODO
+Thanks to the following contributors who have helped with the project:
+- Eric Roberto Darruiz - [@edarruiz][user_edarruiz]
 
 ## Acknowledgement
-#### From [@edarruiz, Eric Roberto Darruiz - Software developer](https://github.com/edarruiz)
-I personally thank all the great developers, projects and companies I had the opportunity to worked with in the past 23 years, through successes and failures, that made possible the vision and created the necessary skills to create this project today. Over countless years and hours of coding, testing, studying and improving, now I can share a little bit of what I've learned over the years, which I found useful and useless. I hope this content can help you with your projects and as a developer, with your life goals. I wish the best for you developer and technology person, the most successful things hoping you can improve, and one day in the future, share your knowledge with others.
+#### From contributor: Eric Roberto Darruiz - [@edarruiz][user_edarruiz]
+I personally thank all the great developers, projects and companies I had the opportunity to worked with in the past 24 years, through successes and failures, that made possible the vision and created the necessary skills to create this project today. Over countless years and hours of coding, testing, studying and improving, now I can share a little bit of what I've learned over the years, which I found useful and useless. I hope this content can help you with your projects and as a developer, with your life goals. I wish the best for you developer and technology person, the most successful things hoping you can improve, and one day in the future, share your knowledge with others.
 
-You can reach me out on eric@cloudlabtecnologia.com.br. Feel free to contact me :)
+You can reach me out on eric@cloudlabtecnologia.com.br. Feel free to contact me ;)
 
 
 ## Roadmap
-TODO
+On the [Roadmap page][roadmap_doc] you can find our development roadmap, where we share our vision and our strategic objectives for this project.
 
-## Licence
-TODO
+## License
+This project is licensed under the [MIT License][license].
+
+[user_edarruiz]: https://github.com/edarruiz
+[nuget_mongodb]: https://www.nuget.org/packages/MongoDB.Driver
+[mongodb_ver_shield]: https://img.shields.io/nuget/v/MongoDB.Driver
+[contributing]: https://github.com/cloudlabtech/SDK/blob/main/CONTRIBUTING.md
+[sdk_doc]: https://github.com/cloudlabtech/SDK/blob/main/doc/cloudlab.sdk.md
+[mongodb_doc]: https://github.com/cloudlabtech/SDK/blob/main/doc/cloudlab.sdk.mongodb.md
+[samples_doc]: https://github.com/cloudlabtech/SDK/blob/main/doc/samples.md
+[quickstart_doc]: https://github.com/cloudlabtech/SDK/blob/main/doc/quickstart.md
+[concepts_doc]: https://github.com/cloudlabtech/SDK/blob/main/doc/concepts.md
+[features_doc]: https://github.com/cloudlabtech/SDK/blob/main/doc/features.md
+[samples_doc]: https://github.com/cloudlabtech/SDK/blob/main/doc/samples.md
+[roadmap_doc]: https://github.com/cloudlabtech/SDK/blob/main/doc/roadmap.md
+[license]: https://github.com/cloudlabtech/SDK/blob/main/LICENSE
