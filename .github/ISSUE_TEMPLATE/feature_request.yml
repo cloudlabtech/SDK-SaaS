@@ -18,7 +18,7 @@ body:
     id: feature-problem
     attributes:
       label: Problem
-      description: Is your feature request related to a problem (Yes/No)? If Yes, please describe
+      description: Is your feature request related to a problem? If Yes, please describe in details.
       placeholder: A clear and concise description of what the problem is. Ex. I'm always frustrated when [...].
     validations:
       required: true
@@ -26,7 +26,7 @@ body:
     id: feature-solution
     attributes:
       label: Solution
-      description: Describe the solution you'd like
+      description: Describe the solution you'd like to see for this feature.
       placeholder: A clear and concise description of what you want to happen.
     validations:
       required: true
@@ -34,15 +34,15 @@ body:
     id: feature-alternatives
     attributes:
       label: Alternatives
-      description: Describe alternatives you've considered
-      placeholder: A clear and concise description of any alternative solutions or features you've considered.
+      description: Describe alternatives you've considered, discovered, created or tested.
+      placeholder: A clear and concise description of any alternative solutions or features you've considered, discovered, created or tested.
     validations:
       required: true
   - type: textarea
     id: example
     attributes:
       label: Examples
-      description: If there was any alternatives, provide some examples of how the alternative has been applied
+      description: If there was any alternatives, provide some examples of how the alternative has been applied.
       placeholder: Code, links, snippets showing examples how to replicate the alternative described.
     validations:
       required: true
@@ -50,14 +50,16 @@ body:
     id: saas-type
     attributes:
       label: SaaS type
-      description: Select the types of SaaS which this new feature applies
+      description: Select the types of SaaS which this new feature applies.
       options:
         - label: SaaS
         - label: Micro-SaaS
   - type: markdown
     attributes:
-      value: We **only** consider evaluate new features that solves a SaaS or Micro-SaaS problems. With that in mind, help us to understand what this feature will solve and what value it will bring to business.
-  - type: input
+      value: |
+        ### SaaS and Micro-SaaS related information
+        We **only** consider evaluate new features that solves a SaaS or Micro-SaaS problems. With that in mind, help us to understand what this feature will solve and what value it will bring to business.
+  - type: textarea
     id: saas-market
     attributes:
       label: SaaS Market
@@ -69,15 +71,15 @@ body:
     id: saas-technical-problem
     attributes:
       label: SaaS Technical Problem
-      description: Describe in full details what is the technical or technological problem this new feature solves for a SaaS or Micro-Saas
+      description: Describe in full details what is the technical or technological problem this new feature solves for a SaaS or Micro-Saas.
       placeholder: A clear and concise description of what you want to technically solve with this feature.
     validations:
       required: true
   - type: checkboxes
     id: saas-technical-problem-type
     attributes:
-      label: Technical problem layer
-      description: Select one or more categories where this new feature needs to be implemented to solve the technical problems you provided
+      label: Where the technical problem should be resolved?
+      description: Select one or more categories where this new feature needs to be implemented to solve the technical problems you provided.
       options:
         - label: SDK (Related to building blocks)
         - label: Application (Related to your project)
@@ -91,13 +93,13 @@ body:
     id: saas-technical-layer-details
     attributes:
       label: Where and How yout want this feature available?
-      description: Based on provided technical layers this feature applies, please tell us a bit more about your vision where and how you want this feature available on these specific layers
+      description: Based on provided technical layers this feature applies, please tell us a bit more about your vision where and how you want this feature available on these specific layers.
       placeholder: A clear and concise description of where and how you want to use this feature implemented.
   - type: textarea
     id: saas-business-problem
     attributes:
       label: SaaS Business Problem
-      description: Describe in full details what is the business problem this new feature solves for a SaaS or Micro-SaaS
+      description: Describe in full details what is the business problem this new feature solves for a SaaS or Micro-SaaS.
       placeholder: A clear and concise description of what business problem you want to solve with this feature.
     validations:
       required: true
@@ -105,7 +107,7 @@ body:
     id: saas-business-value
     attributes:
       label: SaaS Business Value
-      description: Describe in full details what is the business value this new feature will bring to SaaS or Micro-SaaS solutions in the market
-      placeholder: A clear and consise description of what business value will this feature bring to the SaaS or Micro-SaaS solutions
+      description: Describe in full details what is the business value this new feature will bring to SaaS or Micro-SaaS solutions in the market.
+      placeholder: A clear and consise description of what business value will this feature bring to the SaaS or Micro-SaaS solutions.
 assignees:
   - cloudlabtecnologia  
