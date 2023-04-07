@@ -46,6 +46,11 @@ body:
       placeholder: Code, links, snippets showing examples how to replicate the alternative described.
     validations:
       required: true
+  - type: markdown
+    attributes:
+      value: |
+        ### SaaS and Micro-SaaS related information
+        We **only** consider evaluate new features that solves a SaaS or Micro-SaaS problems. With that in mind, help us to understand what this feature will solve and what value it will bring to business.
   - type: checkboxes
     id: saas-type
     attributes:
@@ -54,11 +59,6 @@ body:
       options:
         - label: SaaS
         - label: Micro-SaaS
-  - type: markdown
-    attributes:
-      value: |
-        ### SaaS and Micro-SaaS related information
-        We **only** consider evaluate new features that solves a SaaS or Micro-SaaS problems. With that in mind, help us to understand what this feature will solve and what value it will bring to business.
   - type: textarea
     id: saas-market
     attributes:
