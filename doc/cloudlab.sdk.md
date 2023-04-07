@@ -1,2 +1,0 @@
-# CloudLab.SDK Package
-TODO
