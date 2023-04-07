@@ -5,7 +5,15 @@ body:
   - type: markdown
     attributes:
       value: |
-        We welcome bug reports! Please see our [contribution guidelines](https://github.com/cloudlabtech/SDK/blob/main/CONTRIBUTING.md) for more information on writing a good bug report. This template will help us gather the information we need to start the triage process.
+        We welcome bug reports! Please see our [contribution guidelines](https://github.com/cloudlabtech/SDK/blob/main/CONTRIBUTING.md) for more information on writing a good bug report. This template will help us gather the information we need to evaluate the bug report.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: This project has a Code of Conduct that all participants are expected to understand and follow.
+      options:
+        - label: I have read and agree to the CloudLab SDK project's [Code of Conduct](https://github.com/cloudlabtech/.github/blob/main/CODE_OF_CONDUCT.md)
+          required: true
   - type: textarea
     id: background
     attributes:
