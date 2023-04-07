@@ -1,0 +1,111 @@
+name: New Feature Request
+description: Suggest an idea for this project
+labels: [new-feature]
+body: 
+  - type: markdown
+    attributes:
+      value: | 
+        We welcome new feature requests! Please see our [contribution guidelines](https://github.com/cloudlabtech/SDK/blob/main/CONTRIBUTING.md) for more information on writing a good feature request. This template will help us gather the information we need to evaluate the new feature request.
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: This project has a Code of Conduct that all participants are expected to understand and follow.
+      options:
+        - label: I have read and agree to the CloudLab SDK project's [Code of Conduct](https://github.com/cloudlabtech/.github/blob/main/CODE_OF_CONDUCT.md)
+          required: true
+  - type: textarea
+    id: feature-problem
+    attributes:
+      label: Problem
+      description: Is your feature request related to a problem (Yes/No)? If Yes, please describe
+      placeholder: A clear and concise description of what the problem is. Ex. I'm always frustrated when [...].
+    validations:
+      required: true
+  - type: textarea
+    id: feature-solution
+    attributes:
+      label: Solution
+      description: Describe the solution you'd like
+      placeholder: A clear and concise description of what you want to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: feature-alternatives
+    attributes:
+      label: Alternatives
+      description: Describe alternatives you've considered
+      placeholder: A clear and concise description of any alternative solutions or features you've considered.
+    validations:
+      required: true
+  - type: textarea
+    id: example
+    attributes:
+      label: Examples
+      description: If there was any alternatives, provide some examples of how the alternative has been applied
+      placeholder: Code, links, snippets showing examples how to replicate the alternative described.
+    validations:
+      required: true
+  - type: checkboxes
+    id: saas-type
+    attributes:
+      label: SaaS type
+      description: Select the types of SaaS which this new feature applies
+      options:
+        - label: SaaS
+        - label: Micro-SaaS
+  - type: markdown
+    attributes:
+      value: We **only** consider evaluate new features that solves a SaaS or Micro-SaaS problems. With that in mind, help us to understand what this feature will solve and what value it will bring to business.
+  - type: input
+    id: saas-market
+    attributes:
+      label: SaaS Market
+      description: What is the target market for the SaaS which this feature will solve problems and add business value?
+      placeholder: Ex. Provide the SaaS market this feature will aim, like Digital Marketing, Marketplace, Logistics, Customer Relationship, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: saas-technical-problem
+    attributes:
+      label: SaaS Technical Problem
+      description: Describe in full details what is the technical or technological problem this new feature solves for a SaaS or Micro-Saas
+      placeholder: A clear and concise description of what you want to technically solve with this feature.
+    validations:
+      required: true
+  - type: checkboxes
+    id: saas-technical-problem-type
+    attributes:
+      label: Technical problem layer
+      description: Select one or more categories where this new feature needs to be implemented to solve the technical problems you provided
+      options:
+        - label: SDK (Related to building blocks)
+        - label: Application (Related to your project)
+        - label: Cloud Infrastructure (Related to the platform)
+        - label: Concept or Business (Related to business decisions)
+        - label: Database (Related to specific database implementations)
+        - label: Architecture (Related to technical and structure patterns)
+        - label: Implementation details (Related to your code)
+        - label: Discovery (Related to new concepts development)
+  - type: textarea
+    id: saas-technical-layer-details
+    attributes:
+      label: Where and How yout want this feature available?
+      description: Based on provided technical layers this feature applies, please tell us a bit more about your vision where and how you want this feature available on these specific layers
+      placeholder: A clear and concise description of where and how you want to use this feature implemented.
+  - type: textarea
+    id: saas-business-problem
+    attributes:
+      label: SaaS Business Problem
+      description: Describe in full details what is the business problem this new feature solves for a SaaS or Micro-SaaS
+      placeholder: A clear and concise description of what business problem you want to solve with this feature.
+    validations:
+      required: true
+  - type: textarea
+    id: saas-business-value
+    attributes:
+      label: SaaS Business Value
+      description: Describe in full details what is the business value this new feature will bring to SaaS or Micro-SaaS solutions in the market
+      placeholder: A clear and consise description of what business value will this feature bring to the SaaS or Micro-SaaS solutions
+assignees:
+  - cloudlabtecnologia  
