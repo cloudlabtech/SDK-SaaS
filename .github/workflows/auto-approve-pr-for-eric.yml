@@ -1,4 +1,4 @@
-name: Auto-Approve for depend-a-bot
+name: Auto-Approve for @edarruiz
 on: pull_request_target
 
 jobs:
