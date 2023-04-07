@@ -1,4 +1,4 @@
-name: Auto approve
+name: Auto-Approve for depend-a-bot
 on: pull_request_target
 
 jobs:
