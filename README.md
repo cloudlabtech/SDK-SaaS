@@ -1,5 +1,6 @@
 # The CloudLab Software Development Kit (SDK)
 This project refers to a SDK used to build SaaS and Micro-SaaS for cloud platforms, especially for Microsoft Azure, using dotnet, netcore and C#.
+
 In this SDK you'll find implementations of architectural patterns, cloud concepts, tools and infrastructure details used to build any SaaS or Micro-SaaS solutions.
 
 To learn more about this project, feel free to browse the following links:
@@ -37,7 +38,7 @@ This project is licensed under the [MIT License][license].
 [examples_wiki]: https://github.com/cloudlabtech/SDK/wiki/Examples
 [roadmap_wiki]: https://github.com/cloudlabtech/SDK/wiki/Roadmap
 [contributing]: https://github.com/cloudlabtech/SDK/blob/main/CONTRIBUTING.md
-[contributing_wiki]: https://github.com/cloudlabtech/SDK/wiki/How-to-Contribute
+[contributing_wiki]: https://github.com/cloudlabtech/SDK/wiki/How-to-Contribute-to-Wiki
 [user_edarruiz]: https://github.com/edarruiz
 [license]: https://github.com/cloudlabtech/SDK/blob/main/LICENSE
 
