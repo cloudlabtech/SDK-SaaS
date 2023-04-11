@@ -13,7 +13,7 @@
 		</Description>
 		<Copyright>Copyright (c) 2023 CloudLab Tech.</Copyright>
 		<PackageProjectUrl>https://github.com/cloudlabtech/SDK</PackageProjectUrl>
-		<Version>1.0.0-alpha.5</Version>
+		<Version>1.0.0-alpha.6</Version>
 		<Authors>CloudLab Tecnologia</Authors>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageReleaseNotes>https://github.com/cloudlabtech/SDK/wiki/Release-Notes</PackageReleaseNotes>
