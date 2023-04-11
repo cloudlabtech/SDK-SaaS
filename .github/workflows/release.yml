@@ -1,27 +1,42 @@
 name: Release to NuGet.org
 on:
   workflow_dispatch:
+  create:
+    branches: 
+      - release/**
   push:
-    branches: [ "main", "release/*" ]
+    branches: 
+      - release/**
   pull_request:
-    branches: [ "main", "release/*" ]
+    branches: 
+      - release/**
   release:
-    types: [published]
-    
+    types: 
+      - published
 jobs:
   build:
+    env:
+      BUILD_CONFIG: 'Release'
+      SOLUTION: 'CloudLab.SDK.sln'  
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
     - name: Setup .NET SDK
       uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 7.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore $SOLUTION --verbosity normal
+
     - name: Build
-      run: dotnet build -c Release
+      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore
+
     - name: Test
-      run: dotnet test -c Release --no-build
-    - name: Pack nugets
-      run: dotnet pack -c Release --no-build --output .
+      run: dotnet test --configuration $BUILD_CONFIG --no-restore --no-build --verbosity normal
+
     - name: Push to NuGet
       run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
