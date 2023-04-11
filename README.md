@@ -5,6 +5,7 @@ In this SDK you'll find implementations of architectural patterns, cloud concept
 
 [![CodeQL](https://github.com/cloudlabtech/SDK/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/cloudlabtech/SDK/actions/workflows/codeql.yml)
 [![Publish to NuGet.org](https://github.com/cloudlabtech/SDK/actions/workflows/release.yml/badge.svg)](https://github.com/cloudlabtech/SDK/actions/workflows/release.yml)
+
 To learn more about this project, feel free to browse the following links:
 
 - [Background and the Vision][background_wiki]
