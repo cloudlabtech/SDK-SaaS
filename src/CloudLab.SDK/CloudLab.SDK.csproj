@@ -14,5 +14,6 @@ In this SDK you'll find implementations of architectural patterns, cloud concept
 		<Copyright>Copyright (c) 2023 CloudLab Tech.</Copyright>
 		<PackageProjectUrl>https://github.com/cloudlabtech/SDK</PackageProjectUrl>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Version>1.0.0-alpha.1</Version>
 	</PropertyGroup>
 </Project>
