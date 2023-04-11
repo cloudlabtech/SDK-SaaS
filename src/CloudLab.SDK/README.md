@@ -3,6 +3,8 @@ This project refers to a SDK used to build SaaS and Micro-SaaS for cloud platfor
 
 In this SDK you'll find implementations of architectural patterns, cloud concepts, tools and infrastructure details used to build any SaaS or Micro-SaaS solutions.
 
+This package supports [Source Link](https://learn.microsoft.com/en-us/dotnet/standard/library-guidance/sourcelink).
+
 ## Links
 - [Source](https://github.com/cloudlabtech/SDK)
 - [Documentation](https://github.com/cloudlabtech/SDK/wiki)
