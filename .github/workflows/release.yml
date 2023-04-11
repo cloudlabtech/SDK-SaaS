@@ -1,4 +1,4 @@
-name: Release to NuGet.org
+name: Publish to NuGet.org
 on:
   workflow_dispatch:
   create:
