@@ -4,7 +4,8 @@ This project refers to a SDK used to build SaaS and Micro-SaaS for cloud platfor
 In this SDK you'll find implementations of architectural patterns, cloud concepts, tools and infrastructure details used to build any SaaS or Micro-SaaS solutions.
 
 [![CodeQL](https://github.com/cloudlabtech/SDK/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/cloudlabtech/SDK/actions/workflows/codeql.yml)
-[![Publish to NuGet.org](https://github.com/cloudlabtech/SDK/actions/workflows/release.yml/badge.svg)](https://github.com/cloudlabtech/SDK/actions/workflows/release.yml)
+[![Publish to NuGet.org](https://github.com/cloudlabtech/SDK/actions/workflows/publish-to-nuget-org.yml/badge.svg)](https://github.com/cloudlabtech/SDK/actions/workflows/publish-to-nuget-org.yml)
+[![Publish to GitHub Packages](https://github.com/cloudlabtech/SDK/actions/workflows/publish-to-github-nuget.yml/badge.svg)](https://github.com/cloudlabtech/SDK/actions/workflows/publish-to-github-nuget.yml)
 ![Nuget](https://img.shields.io/nuget/v/CloudLab.SDK)
 
 To learn more about this project, feel free to browse the following links:
