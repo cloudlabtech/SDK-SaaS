@@ -13,5 +13,6 @@
 In this SDK you'll find implementations of architectural patterns, cloud concepts, tools and infrastructure details used to build any SaaS or Micro-SaaS solutions.</Description>
 		<Copyright>Copyright (c) 2023 CloudLab Tech.</Copyright>
 		<PackageProjectUrl>https://github.com/cloudlabtech/SDK</PackageProjectUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 	</PropertyGroup>
 </Project>
