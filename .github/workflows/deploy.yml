@@ -21,6 +21,11 @@ jobs:
       matrix:
         dotnet-version:
           - '7.0.x' # Already produces net6.0 and net7.0 binaries due the <TargetFrameworks> MSBuild property
+        project-paths:
+          - ./src/CloudLab.SDK/CloudLab.SDK.csproj
+          - ./src/CloudLab.SDK.MongoDB/CloudLab.SDK.MongoDB.csproj
+          - ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj
+          - ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj
     timeout-minutes: 5
     steps:
     # SETUP STAGE - dotnet versions install
@@ -33,56 +38,46 @@ jobs:
       uses: actions/checkout@v3
 
     # RESTORE STAGE - dotnet restore **/*.csproj
-    - name: dotnet restore CloudLab.SDK
-      run: dotnet restore ./src/CloudLab.SDK/CloudLab.SDK.csproj --verbosity detailed
-
-    - name: dotnet restore CloudLab.SDK.MongoDB
-      run: dotnet restore ./src/CloudLab.SDK.MongoDB/CloudLab.SDK.MongoDB.csproj --verbosity detailed
-
-    - name: dotnet restore CloudLab.SDK.Tests
-      run: dotnet restore ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj --verbosity detailed
-
-    - name: dotnet restore CloudLab.SDK.MongoDB.Tests
-      run: dotnet restore ./src/CloudLab.SDK.MongoDB.Tests/CloudLab.SDK.MongoDB.Tests.csproj --verbosity detailed
+    - name: RESTORE STAGE - dotnet restore **/*.csproj
+      run: dotnet restore ${{ matrix.project-paths }} --verbosity detailed
 
     # BUILD STAGE - dotnet build **/*.csproj
-    - name: dotnet build CloudLab.SDK
-      run: dotnet build ./src/CloudLab.SDK/CloudLab.SDK.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
-
-    - name: dotnet build CloudLab.SDK.MongoDB
-      run: dotnet build ./src/CloudLab.SDK.MongoDB/CloudLab.SDK.MongoDB.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
-
-    - name: dotnet build CloudLab.SDK.Tests
-      run: dotnet build ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
-
-    - name: dotnet build CloudLab.SDK.MongoDB.Tests
-      run: dotnet build ./src/CloudLab.SDK.MongoDB.Tests/CloudLab.SDK.MongoDB.Tests.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
+    - name: BUILD STAGE - dotnet build **/*.csproj
+      run: dotnet build ${{ matrix.project-paths }} --configuration $BUILD_CONFIG --no-restore --verbosity detailed
 
     # TEST STAGE - dotnet test **/*.csproj
-    - name: dotnet test CloudLab.SDK
-      run: dotnet test ./src/CloudLab.SDK/CloudLab.SDK.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
+    - name: TEST STAGE - dotnet test **/*.csproj
+      run: dotnet test ${{ matrix.project-paths }} --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
 
-    - name: dotnet test CloudLab.SDK.MongoDB
-      run: dotnet test ./src/CloudLab.SDK.MongoDB/CloudLab.SDK.MongoDB.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
+    # PUBLISH ARTIFACTS STAGE - **/bin/Release/
+    - name: PUBLISH ARTIFACTS STAGE - CloudLab.SDK binaries
+      uses: actions/checkout@v3
+      with:
+        name: sdk-artifacts
+        path: ./src/CloudLab.SDK/bin/Release/
+        if-no-files-found: error
+        retention-days: 7
 
-    - name: dotnet test CloudLab.SDK.Tests
-      run: dotnet test ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
+    - name: PUBLISH ARTIFACTS STAGE - CloudLab.SDK.MongoDB binaries
+      uses: actions/checkout@v3
+      with:
+        name: sdk-mongodb-artifacts
+        path: ./src/CloudLab.SDK.MongoDB/bin/Release/
+        if-no-files-found: error
+        retention-days: 7
 
-    - name: dotnet test CloudLab.SDK.MongoDB.Tests
-      run: dotnet test ./src/CloudLab.SDK.MongoDB.Tests/CloudLab.SDK.MongoDB.Tests.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
-
-  publish-github-packages:
-    name: Publish to GitHub Package Repository Stage
-    runs-on: ubuntu-latest
-    needs: build-linux
-    steps:
-    - name: Push to GitHub Package Repository
-      run: dotnet nuget push **\*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
+  #publish-github-packages:
+  #  name: Publish to GitHub Package Repository Stage
+  #  runs-on: ubuntu-latest
+  #  needs: build-linux
+  #  steps:
+  #  - name: Push to GitHub Package Repository
+  #    run: dotnet nuget push **\*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
   
-  publish-nugetorg:
-    name: Publish to NuGet.org Package Repository Stage
-    runs-on: ubuntu-latest
-    needs: build-linux
-    steps:
-    - name: Push to NuGet.org
-      run: dotnet nuget push **\*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate    
+  #publish-nugetorg:
+  #  name: Publish to NuGet.org Package Repository Stage
+  #  runs-on: ubuntu-latest
+  #  needs: build-linux
+  #  steps:
+  #  - name: Push to NuGet.org
+  #    run: dotnet nuget push **\*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate    
