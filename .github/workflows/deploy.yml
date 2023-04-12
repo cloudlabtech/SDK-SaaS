@@ -1,9 +1,16 @@
 name: SDK Packages CI/CD
 on:
   workflow_dispatch: # runs manually
+  push:
+    tags:
+      - "*-alpha*"
+      - "*-beta*"
+      - "v*.*.*"
   create:
     branches:
-      - release/* # On creating a new branch called release/*
+      - release/*-alpha*
+      - release/*-beta*
+      - release/v*.*.*
 jobs:
   build-stage:
     name: CI
@@ -189,7 +196,7 @@ jobs:
     - name: Print version name
       run: echo ${{ steps.branch-name.version }}
 
-    # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-relase'.
+    # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-release'.
     - name: Create GitHub Pre-Release
       id: create-github-pre-release 
       uses: softprops/action-gh-release@v1
@@ -202,7 +209,7 @@ jobs:
         generate_release_notes: true
         append_body: true
         
-    # CREATE GITHUB RELEASE STEP - When we do not have 'alpha' or 'beta' in the branch name, we mark the github release as 'relase'.
+    # CREATE GITHUB RELEASE STEP - When we do not have 'alpha' or 'beta' in the branch name, we mark the github release as 'release'.
     - name: Create GitHub Release
       id: create-github-release 
       uses: softprops/action-gh-release@v1
