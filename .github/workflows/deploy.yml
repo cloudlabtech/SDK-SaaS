@@ -1,57 +1,88 @@
-name: SDK CI/CD
+name: SDK Packages CI/CD (Linux, net6.0/net7.0)
 on:
   workflow_dispatch: # runs manually
   create:
     branches:
-      - release/*
+      - release/* # On creating a new branch called release/*
   push:
     branches:
-      - release/*
+      - release/* # On push to branch called release/*
+  release:
+    types: 
+      - published # On publish a new release on GitHub
 jobs:
-  stage_build:
-    name: 'Build SDK Stage'
+  build-linux:
+    name: Linux Build Stage
     env: 
       BUILD_CONFIG: 'Release'
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: true
       matrix:
         dotnet-version:
-          - '7.0.x'
-          - '6.0.x'
-        os: 
-          - ubuntu-latest
-          - windows-latest
-          - macos-latest
+          - '7.0.x' # Already produces net6.0 and net7.0 binaries due the <TargetFrameworks> MSBuild property
     timeout-minutes: 5
     steps:
+    # SETUP STAGE - dotnet versions install
     - name: Setup .NET SDK ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: ${{ matrix.dotnet-version }}
+        dotnet-version: ${{ matrix.dotnet-version }}      
 
     - name: Checkout source
       uses: actions/checkout@v3
 
-    - name: Restore (dotnet restore)
-      run: |
-        cd src
-        dotnet restore --verbosity normal        
-    
-    - name: Build (dotnet build)
-      run: | 
-        cd src
-        dotnet build --configuration $BUILD_CONFIG --no-restore
+    # RESTORE STAGE - dotnet restore **/*.csproj
+    - name: dotnet restore CloudLab.SDK
+      run: dotnet restore ./src/CloudLab.SDK/CloudLab.SDK.csproj --verbosity detailed
 
-    - name: Test (dotnet test)
-      run: |
-        cd src
-        dotnet test --configuration $BUILD_CONFIG --no-restore --no-build --verbosity normal
+    - name: dotnet restore CloudLab.SDK.MongoDB
+      run: dotnet restore ./src/CloudLab.SDK.MongoDB/CloudLab.SDK.MongoDB.csproj --verbosity detailed
 
-    - name: Upload Artifacts
-      uses: actions/upload-artifact@v3
-      with: 
-        name: sdk-artifacts
-        path: |
-          /home/runner/work/SDK/SDK/src/CloudLab.SDK/bin/Release/
-          /home/runner/work/SDK/SDK/src/CloudLab.SDK.MongoDB/bin/Release/
+    - name: dotnet restore CloudLab.SDK.Tests
+      run: dotnet restore ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj --verbosity detailed
+
+    - name: dotnet restore CloudLab.SDK.MongoDB.Tests
+      run: dotnet restore ./src/CloudLab.SDK.MongoDB.Tests/CloudLab.SDK.MongoDB.Tests.csproj --verbosity detailed
+
+    # BUILD STAGE - dotnet build **/*.csproj
+    - name: dotnet build CloudLab.SDK
+      run: dotnet build ./src/CloudLab.SDK/CloudLab.SDK.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
+
+    - name: dotnet build CloudLab.SDK.MongoDB
+      run: dotnet build ./src/CloudLab.SDK.MongoDB/CloudLab.SDK.MongoDB.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
+
+    - name: dotnet build CloudLab.SDK.Tests
+      run: dotnet build ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
+
+    - name: dotnet build CloudLab.SDK.MongoDB.Tests
+      run: dotnet build ./src/CloudLab.SDK.MongoDB.Tests/CloudLab.SDK.MongoDB.Tests.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
+
+    # TEST STAGE - dotnet test **/*.csproj
+    - name: dotnet test CloudLab.SDK
+      run: dotnet test ./src/CloudLab.SDK/CloudLab.SDK.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
+
+    - name: dotnet test CloudLab.SDK.MongoDB
+      run: dotnet test ./src/CloudLab.SDK.MongoDB/CloudLab.SDK.MongoDB.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
+
+    - name: dotnet test CloudLab.SDK.Tests
+      run: dotnet test ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
+
+    - name: dotnet test CloudLab.SDK.MongoDB.Tests
+      run: dotnet test ./src/CloudLab.SDK.MongoDB.Tests/CloudLab.SDK.MongoDB.Tests.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
+
+  publish-github-packages:
+    name: Publish to GitHub Package Repository Stage
+    runs-on: ubuntu-latest
+    needs: build-linux
+    steps:
+    - name: Push to GitHub Package Repository
+      run: dotnet nuget push **\*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
+  
+  publish-nugetorg:
+    name: Publish to NuGet.org Package Repository Stage
+    runs-on: ubuntu-latest
+    needs: build-linux
+    steps:
+    - name: Push to NuGet.org
+      run: dotnet nuget push **\*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate    
