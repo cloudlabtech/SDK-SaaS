@@ -34,7 +34,7 @@ jobs:
       run: dotnet restore $SOLUTION_NAME --verbosity normal        
     
     - name: Build (dotnet build)
-      run: dotnet build $SOLUTION_NAME --configuration $BUILD_CONFIG --no-restore
+      run: dotnet build $SOLUTION_NAME --configuration $BUILD_CONFIG --no-restore --output ./artifacts
 
     - name: Test (dotnet test)
       run: dotnet test $SOLUTION_NAME --configuration $BUILD_CONFIG --no-restore --no-build --verbosity normal
