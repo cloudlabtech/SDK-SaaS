@@ -25,14 +25,14 @@ jobs:
           - macos-latest
     timeout-minutes: 5
     steps:
-    - name: Checkout source
-      uses: actions/checkout@v3
-
     - name: Setup .NET SDK ${{ matrix.dotnet-version }}
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
-        
+
+    - name: Checkout source
+      uses: actions/checkout@v3
+       
     - name: Restore (dotnet restore)
       run: dotnet restore --verbosity normal        
     
