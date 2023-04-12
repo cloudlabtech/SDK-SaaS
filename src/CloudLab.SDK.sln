@@ -16,14 +16,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK.MongoDB", "Clo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK.Tests", "CloudLab.SDK.Tests\CloudLab.SDK.Tests.csproj", "{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.MongoDB.Tests", "CloudLab.MongoDB.Tests\CloudLab.MongoDB.Tests.csproj", "{1C4A11F7-6FAF-43F6-B949-2A698877458A}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{3B7E7DFD-B8F1-4A05-9F0F-F16673C89DF1}"
 	ProjectSection(SolutionItems) = preProject
 		..\.gitignore = ..\.gitignore
 		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK.MongoDB.Tests", "CloudLab.SDK.MongoDB.Tests\CloudLab.SDK.MongoDB.Tests.csproj", "{A4557C0D-F80D-4E59-987A-26E82BF1F4D4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +43,10 @@ Global
 		{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1C4A11F7-6FAF-43F6-B949-2A698877458A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1C4A11F7-6FAF-43F6-B949-2A698877458A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1C4A11F7-6FAF-43F6-B949-2A698877458A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1C4A11F7-6FAF-43F6-B949-2A698877458A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,7 +55,7 @@ Global
 		{6D56AF04-5D85-4DDF-90A4-47EC4A6DF602} = {D16EF420-4254-40A3-AB18-93C7AA1DAFC0}
 		{4C504053-AAC8-4EF2-AF22-3AD7B6CFA309} = {D16EF420-4254-40A3-AB18-93C7AA1DAFC0}
 		{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF} = {0ED5031A-5830-44C3-98BD-4F1659230C57}
-		{1C4A11F7-6FAF-43F6-B949-2A698877458A} = {0ED5031A-5830-44C3-98BD-4F1659230C57}
+		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4} = {0ED5031A-5830-44C3-98BD-4F1659230C57}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B72F861C-50E3-4CCB-82A4-2C1DDE7FA90E}
