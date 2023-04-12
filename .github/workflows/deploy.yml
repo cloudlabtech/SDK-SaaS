@@ -9,7 +9,7 @@ on:
       - release/*
 jobs:
   stage_build:
-    name: 'STAGE: Build SDK'
+    name: 'Build SDK Stage'
     env: 
       BUILD_CONFIG: 'Release'
       SOLUTION_NAME: 'src/CloudLab.SDK.sln'
@@ -31,7 +31,7 @@ jobs:
         dotnet-version: ${{ matrix.dotnet-version }}
     
     - name: Build (dotnet build)
-      run: dotnet build $SOLUTION --configuration $BUILD_CONFIG --no-restore
+      run: dotnet build $SOLUTION_NAME --configuration $BUILD_CONFIG --no-restore
 
     - name: Test (dotnet test)
-      run: dotnet test $SOLUTION --configuration $BUILD_CONFIG --no-restore --no-build --verbosity normal
+      run: dotnet test $SOLUTION_NAME --configuration $BUILD_CONFIG --no-restore --no-build --verbosity normal
