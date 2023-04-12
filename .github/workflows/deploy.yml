@@ -6,11 +6,9 @@ on:
       - "*-alpha*"
       - "*-beta*"
       - "v*.*.*"
-  create:
-    branches:
-      - release/*-alpha*
-      - release/*-beta*
-      - release/v*.*.*
+concurrency:
+  group: graphql-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   build-stage:
     name: CI
@@ -186,24 +184,14 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
     
-    # SPLIT BRANCH NAME STEP - Get the last part or any branches starting with 'release/'
-    - name: Get version name from branch release
-      id: branch-name
-      env:
-        BRANCH_NAME: ${{ github.ref_name }}
-      run: echo "version=${BRANCH##*/}" >> $GITHUB_OUTPUT
-
-    - name: Print version name
-      run: echo ${{ steps.branch-name.version }}
-
     # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-release'.
     - name: Create GitHub Pre-Release
       id: create-github-pre-release 
       uses: softprops/action-gh-release@v1
-      if: contains(steps.branch-name.version, 'alpha') || contains(steps.branch-name.version, 'beta')
+      if: contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta')
       with:
-        tag_name: ${{ steps.branch-name.version }}
-        name: Release ${{ steps.branch-name.version }}
+        tag_name: ${{ github.ref_name }}
+        name: Release ${{ github.ref_name }}
         draft: false
         prerelease: true
         generate_release_notes: true
@@ -213,10 +201,10 @@ jobs:
     - name: Create GitHub Release
       id: create-github-release 
       uses: softprops/action-gh-release@v1
-      if: ${{ !contains(steps.branch-name.version, 'alpha') || !contains(steps.branch-name.version, 'beta') }} 
+      if: ${{ !contains(github.ref_name, 'alpha') || !contains(github.ref_name, 'beta') }} 
       with:
-        tag_name: ${{ steps.branch-name.version }}
-        name: Release ${{ steps.branch-name.version }}
+        tag_name: ${{ github.ref_name }}
+        name: Release ${{ github.ref_name }}
         draft: false
         prerelease: false
         generate_release_notes: true
