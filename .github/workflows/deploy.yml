@@ -186,6 +186,9 @@ jobs:
         BRANCH_NAME: ${{ github.ref_name }}
       run: echo "version=${BRANCH##*/}" >> $GITHUB_OUTPUT
 
+    - name: Print version name
+      run: echo ${{ steps.branch-name.version }}
+
     # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-relase'.
     - name: Create GitHub Pre-Release
       id: create-github-pre-release 
@@ -193,7 +196,7 @@ jobs:
       if: contains(steps.branch-name.version, 'alpha') || contains(steps.branch-name.version, 'beta')
       with:
         tag_name: ${{ steps.branch-name.version }}
-        release_name: Release ${{ steps.branch-name.version }}
+        name: Release ${{ steps.branch-name.version }}
         draft: false
         prerelease: true
         generate_release_notes: true
@@ -206,7 +209,7 @@ jobs:
       if: ${{ !contains(steps.branch-name.version, 'alpha') || !contains(steps.branch-name.version, 'beta') }} 
       with:
         tag_name: ${{ steps.branch-name.version }}
-        release_name: Release ${{ steps.branch-name.version }}
+        name: Release ${{ steps.branch-name.version }}
         draft: false
         prerelease: false
         generate_release_notes: true
