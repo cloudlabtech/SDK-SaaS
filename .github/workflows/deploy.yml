@@ -84,8 +84,6 @@ jobs:
 
   publish-github-packages:
     name: CD GitHub
-    env:
-      SDK_ARTIFACT_PATH: ~/sdk-artifacts
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
@@ -106,14 +104,14 @@ jobs:
       uses: actions/download-artifact@v3
       with:
         name: sdk-artifacts
-        path: $SDK_ARTIFACT_PATH
+        path: ~/sdk-artifacts
     - name: Display structure of downloaded artifact files
       run: ls -R
-      working-directory: $SDK_ARTIFACT_PATH
+      working-directory: ~/sdk-artifacts
 
     # PUBLISH STEP - dotnet nuget push GitHub Package Repository
-    #- name: Push to GitHub Package Repository
-    #  run: dotnet nuget push **\*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
+    - name: Push to GitHub Package Repository
+      run: dotnet nuget push ~/sdk-artifacts/*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
   
   #publish-nugetorg:
   #  name: CD NuGet.org
