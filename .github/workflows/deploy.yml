@@ -1,9 +1,6 @@
 name: SDK Packages CI/CD
 on:
   workflow_dispatch: # runs manually
-  create:
-    branches:
-      - release/* # On creating a new branch called release/*
   push:
     branches:
       - release/* # On push to branch called release/*
