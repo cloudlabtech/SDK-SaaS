@@ -109,14 +109,65 @@ jobs:
       run: ls -R
       working-directory: ./sdk-artifacts
 
-    # PUBLISH STEP - dotnet nuget push GitHub Package Repository
-    - name: Push to GitHub Package Repository
+    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK.MongoDB binaries
+    - name: Download sdk-mongodb-artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: sdk-mongodb-artifacts
+        path: ./sdk-mongodb-artifacts
+    - name: Display structure of downloaded artifact files
+      run: ls -R
+      working-directory: ./sdk-mongodb-artifacts
+
+    # PUBLISH STEP - dotnet nuget push GitHub Package Repository for CloudLab.SDK binaries
+    - name: Push CloudLab.SDK to GitHub Package Repository
       run: dotnet nuget push ./sdk-artifacts/*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
-  
-  #publish-nugetorg:
-  #  name: CD NuGet.org
-  #  runs-on: ubuntu-latest
-  #  needs: build-stage
-  #  steps:
-  #  - name: Push to NuGet.org
-  #    run: dotnet nuget push **\*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate    
+
+    # PUBLISH STEP - dotnet nuget push GitHub Package Repository for CloudLab.SDK.MongoDB binaries
+    - name: Push CloudLab.SDK.MongoDB to GitHub Package Repository
+      run: dotnet nuget push ./sdk-mongodb-artifacts/*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
+
+  publish-nugetorg:
+    name: CD NuGet.org
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        dotnet-version:
+          - '7.0.x' # Already produces net6.0 and net7.0 binaries due the <TargetFrameworks> MSBuild property
+    timeout-minutes: 5
+    needs: build-stage
+    steps:
+    # SETUP STEP - dotnet versions install
+    - name: Setup .NET SDK ${{ matrix.dotnet-version }}
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ matrix.dotnet-version }}      
+    
+    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK binaries
+    - name: Download sdk-artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: sdk-artifacts
+        path: ./sdk-artifacts
+    - name: Display structure of downloaded artifact files
+      run: ls -R
+      working-directory: ./sdk-artifacts
+
+    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK.MongoDB binaries
+    - name: Download sdk-mongodb-artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: sdk-mongodb-artifacts
+        path: ./sdk-mongodb-artifacts
+    - name: Display structure of downloaded artifact files
+      run: ls -R
+      working-directory: ./sdk-mongodb-artifacts
+
+    # PUBLISH STEP - dotnet nuget push NuGet.org Package Repository for CloudLab.SDK binaries
+    - name: Push CloudLab.SDK to NuGet.org Package Repository
+      run: dotnet nuget push ./sdk-artifacts/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate    
+
+    # PUBLISH STEP - dotnet nuget push NuGet.org Package Repository for CloudLab.SDK.MongoDB binaries
+    - name: Push CloudLab.SDK.MongoDB to NuGet.org Package Repository
+      run: dotnet nuget push ./sdk-mongodb-artifacts/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate    
