@@ -187,7 +187,7 @@ jobs:
     - name: Test Pre-Release Alpha
       if: contains(github.ref_name, 'alpha')
       run: echo "Alpha Pre-Release detected"
-    - name: Test Pre-Release Alpha
+    - name: Test Pre-Release Beta
       if: contains(github.ref_name, 'beta')
       run: echo "Beta Pre-Release detected"
     - name: Test Pre-Release Alpha or Beta
@@ -195,7 +195,7 @@ jobs:
       run: echo "Alpha Pre-Release detected"
 
     - name: Test Release
-      if: ${{ !contains(github.ref_name, 'alpha') || !contains(github.ref_name, 'beta') }} 
+      if: contains(github.ref_name, 'alpha') == false || contains(github.ref_name, 'beta') == false
       run: echo "Release detected"
     
     # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-release'.
