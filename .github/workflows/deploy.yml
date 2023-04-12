@@ -4,9 +4,6 @@ on:
   create:
     branches:
       - release/* # On creating a new branch called release/*
-  release:
-    types: 
-      - published # On publish a new release on GitHub
 jobs:
   build-stage:
     name: CI
@@ -26,6 +23,7 @@ jobs:
       with:
         dotnet-version: ${{ matrix.dotnet-version }}      
 
+    # GIT CHECKOUT STEP - Get latest sources from git
     - name: Checkout source
       uses: actions/checkout@v3
 
@@ -118,11 +116,11 @@ jobs:
 
     # PUBLISH STEP - dotnet nuget push GitHub Package Repository for CloudLab.SDK binaries
     - name: Push CloudLab.SDK to GitHub Package Repository
-      run: dotnet nuget push ./sdk-artifacts/*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
+      run: dotnet nuget push ./sdk-artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
 
     # PUBLISH STEP - dotnet nuget push GitHub Package Repository for CloudLab.SDK.MongoDB binaries
     - name: Push CloudLab.SDK.MongoDB to GitHub Package Repository
-      run: dotnet nuget push ./sdk-mongodb-artifacts/*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
+      run: dotnet nuget push ./sdk-mongodb-artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
 
   publish-nugetorg:
     name: CD NuGet.org
@@ -163,8 +161,33 @@ jobs:
 
     # PUBLISH STEP - dotnet nuget push NuGet.org Package Repository for CloudLab.SDK binaries
     - name: Push CloudLab.SDK to NuGet.org Package Repository
-      run: dotnet nuget push ./sdk-artifacts/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate    
+      run: dotnet nuget push ./sdk-artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate    
 
     # PUBLISH STEP - dotnet nuget push NuGet.org Package Repository for CloudLab.SDK.MongoDB binaries
     - name: Push CloudLab.SDK.MongoDB to NuGet.org Package Repository
-      run: dotnet nuget push ./sdk-mongodb-artifacts/*.nupkg --api-key ${{secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate    
+      run: dotnet nuget push ./sdk-mongodb-artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate    
+
+  create-github-release:
+    name: Create GitHub release
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+    # GIT CHECKOUT STEP - Get latest sources from git
+    - name: Checkout source
+      uses: actions/checkout@v3
+
+    # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-relase'.
+    - name: Create GitHub Pre-Release
+      id: create_github_pre_release 
+      uses: actions/create-release@v1
+      if: contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta')
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref_name }}
+        release_name: Release ${{ github.ref_name }}
+        draft: false
+        prerelease: true
+        
+          
+
