@@ -1,4 +1,4 @@
-name: SDK Packages CI/CD (net6.0/net7.0)
+name: SDK Packages CI/CD
 on:
   workflow_dispatch: # runs manually
   create:
