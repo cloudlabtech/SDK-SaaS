@@ -7,7 +7,7 @@ on:
       - "*-beta*"
       - "v*.*.*"
 concurrency:
-  group: graphql-${{ github.ref }}
+  group: cid-cd-sdk-${{ github.ref }}
   cancel-in-progress: true
 jobs:
   build-stage:
@@ -183,31 +183,39 @@ jobs:
     # GIT CHECKOUT STEP - Get latest sources from git
     - name: Checkout source
       uses: actions/checkout@v3
+
+    - name: Test Pre-Release
+      if: contains(github.ref_name, "alpha") || contains(github.ref_name, "beta")
+      run: echo "Pre-Release detected"
+
+    - name: Test Release
+      if: ${{ !contains(github.ref_name, 'alpha') || !contains(github.ref_name, 'beta') }} 
+      run: echo "Release detected"
     
     # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-release'.
-    - name: Create GitHub Pre-Release
-      id: create-github-pre-release 
-      uses: softprops/action-gh-release@v1
-      if: contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta')
-      with:
-        tag_name: ${{ github.ref_name }}
-        name: Release ${{ github.ref_name }}
-        draft: false
-        prerelease: true
-        generate_release_notes: true
-        append_body: true
+    #- name: Create GitHub Pre-Release
+    #  if: contains(github.ref_name, "alpha") || contains(github.ref_name, "beta")
+    #  id: create-github-pre-release 
+    #  uses: softprops/action-gh-release@v1      
+    #  with:
+    #    tag_name: ${{ github.ref_name }}
+    #    name: Release ${{ github.ref_name }}
+    #    draft: false
+    #    prerelease: true
+    #    generate_release_notes: true
+    #    append_body: true
         
     # CREATE GITHUB RELEASE STEP - When we do not have 'alpha' or 'beta' in the branch name, we mark the github release as 'release'.
-    - name: Create GitHub Release
-      id: create-github-release 
-      uses: softprops/action-gh-release@v1
-      if: ${{ !contains(github.ref_name, 'alpha') || !contains(github.ref_name, 'beta') }} 
-      with:
-        tag_name: ${{ github.ref_name }}
-        name: Release ${{ github.ref_name }}
-        draft: false
-        prerelease: false
-        generate_release_notes: true
-        append_body: true
+    #- name: Create GitHub Release
+    #  if: ${{ !contains(github.ref_name, 'alpha') || !contains(github.ref_name, 'beta') }} 
+    #  id: create-github-release 
+    #  uses: softprops/action-gh-release@v1
+    #  with:
+    #    tag_name: ${{ github.ref_name }}
+    #    name: Release ${{ github.ref_name }}
+    #    draft: false
+    #    prerelease: false
+    #    generate_release_notes: true
+    #    append_body: true
           
 
