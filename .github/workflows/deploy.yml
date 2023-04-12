@@ -184,9 +184,15 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
 
-    - name: Test Pre-Release
-      if: contains(github.ref_name, "alpha") || contains(github.ref_name, "beta")
-      run: echo "Pre-Release detected"
+    - name: Test Pre-Release Alpha
+      if: contains(github.ref_name, 'alpha')
+      run: echo "Alpha Pre-Release detected"
+    - name: Test Pre-Release Alpha
+      if: contains(github.ref_name, 'beta')
+      run: echo "Beta Pre-Release detected"
+    - name: Test Pre-Release Alpha or Beta
+      if: contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta')
+      run: echo "Alpha Pre-Release detected"
 
     - name: Test Release
       if: ${{ !contains(github.ref_name, 'alpha') || !contains(github.ref_name, 'beta') }} 
@@ -194,7 +200,7 @@ jobs:
     
     # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-release'.
     #- name: Create GitHub Pre-Release
-    #  if: contains(github.ref_name, "alpha") || contains(github.ref_name, "beta")
+    #  if: contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta')
     #  id: create-github-pre-release 
     #  uses: softprops/action-gh-release@v1      
     #  with:
