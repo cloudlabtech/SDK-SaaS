@@ -23,6 +23,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           git-message: 'chore(release): {version}'
           tag-prefix: 'v'
+          skip-version-file: 'true'
       
       - name: Create Release
         id: createrelease
