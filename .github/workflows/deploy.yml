@@ -12,7 +12,6 @@ jobs:
     name: 'Build SDK Stage'
     env: 
       BUILD_CONFIG: 'Release'
-      SOLUTION_NAME: 'src/CloudLab.SDK.sln'
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: true
@@ -35,18 +34,18 @@ jobs:
         dotnet-version: ${{ matrix.dotnet-version }}
         
     - name: Restore (dotnet restore)
-      run: dotnet restore $SOLUTION_NAME --verbosity normal        
+      run: dotnet restore --verbosity normal        
     
     - name: Build (dotnet build)
-      run: dotnet build $SOLUTION_NAME --configuration $BUILD_CONFIG --no-restore
+      run: dotnet build --configuration $BUILD_CONFIG --no-restore
 
     - name: Test (dotnet test)
-      run: dotnet test $SOLUTION_NAME --configuration $BUILD_CONFIG --no-restore --no-build --verbosity normal
+      run: dotnet test --configuration $BUILD_CONFIG --no-restore --no-build --verbosity normal
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
       with: 
         name: sdk-artifacts
         path: |
-          /home/runner/work/SDK/SDK/src/CloudLab.SDK/bin/$BUILD_CONFIG/
-          /home/runner/work/SDK/SDK/src/CloudLab.SDK.MongoDB/bin/$BUILD_CONFIG/
+          /home/runner/work/SDK/SDK/src/CloudLab.SDK/bin/Release/
+          /home/runner/work/SDK/SDK/src/CloudLab.SDK.MongoDB/bin/Release/
