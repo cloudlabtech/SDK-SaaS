@@ -1,9 +1,9 @@
 name: SDK Packages CI/CD
 on:
   workflow_dispatch: # runs manually
-  push:
+  create:
     branches:
-      - release/* # On push to branch called release/*
+      - release/* # On creating a new branch called release/*
   release:
     types: 
       - published # On publish a new release on GitHub
