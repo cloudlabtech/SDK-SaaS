@@ -29,6 +29,9 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: ${{ matrix.dotnet-version }}
+        
+    - name: Restore (dotnet restore)
+      run: dotnet restore $SOLUTION --verbosity normal        
     
     - name: Build (dotnet build)
       run: dotnet build $SOLUTION_NAME --configuration $BUILD_CONFIG --no-restore
