@@ -11,7 +11,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build-stage:
-    name: CI
+    name: CI Stage - Build
     env: 
       BUILD_CONFIG: 'Release'
     runs-on: ubuntu-latest
@@ -83,7 +83,7 @@ jobs:
         retention-days: 7
 
   publish-github-packages:
-    name: CD GitHub
+    name: CD Stage - Deploy to GitHub
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
@@ -128,7 +128,7 @@ jobs:
       run: dotnet nuget push ./sdk-mongodb-artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
 
   publish-nugetorg:
-    name: CD NuGet.org
+    name: CD Stage - Deploy to NuGet.org
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
@@ -173,7 +173,7 @@ jobs:
       run: dotnet nuget push ./sdk-mongodb-artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate    
 
   create-github-release:
-    name: Create GitHub Release
+    name: CD Stage - Create GitHub Release
     runs-on: ubuntu-latest
     timeout-minutes: 5
     needs:
@@ -183,45 +183,29 @@ jobs:
     # GIT CHECKOUT STEP - Get latest sources from git
     - name: Checkout source
       uses: actions/checkout@v3
-
-    - name: Test Pre-Release Alpha
-      if: contains(github.ref_name, 'alpha')
-      run: echo "Alpha Pre-Release detected"
-    - name: Test Pre-Release Beta
-      if: contains(github.ref_name, 'beta')
-      run: echo "Beta Pre-Release detected"
-    - name: Test Pre-Release Alpha or Beta
-      if: contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta')
-      run: echo "Alpha Pre-Release detected"
-
-    - name: Test Release
-      if: ${{ !contains(github.ref_name, 'alpha') && !contains(github.ref_name, 'beta') }}
-      run: echo "Release detected"
     
     # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-release'.
-    #- name: Create GitHub Pre-Release
-    #  if: contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta')
-    #  id: create-github-pre-release 
-    #  uses: softprops/action-gh-release@v1      
-    #  with:
-    #    tag_name: ${{ github.ref_name }}
-    #    name: Release ${{ github.ref_name }}
-    #    draft: false
-    #    prerelease: true
-    #    generate_release_notes: true
-    #    append_body: true
+    - name: Create GitHub Pre-Release
+      id: create-github-pre-release 
+      uses: softprops/action-gh-release@v1
+      if: contains(github.ref_name, 'alpha') || contains(github.ref_name, 'beta')
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: Pre-Release ${{ github.ref_name }}
+        draft: false
+        prerelease: true # <--- PRE RELEASE
+        generate_release_notes: true
         
     # CREATE GITHUB RELEASE STEP - When we do not have 'alpha' or 'beta' in the branch name, we mark the github release as 'release'.
-    #- name: Create GitHub Release
-    #  if: ${{ !contains(github.ref_name, 'alpha') || !contains(github.ref_name, 'beta') }} 
-    #  id: create-github-release 
-    #  uses: softprops/action-gh-release@v1
-    #  with:
-    #    tag_name: ${{ github.ref_name }}
-    #    name: Release ${{ github.ref_name }}
-    #    draft: false
-    #    prerelease: false
-    #    generate_release_notes: true
-    #    append_body: true
+    - name: Create GitHub Release
+      id: create-github-release 
+      uses: softprops/action-gh-release@v1
+      if: ${{ !contains(github.ref_name, 'alpha') && !contains(github.ref_name, 'beta') }}
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: Release ${{ github.ref_name }}
+        draft: false
+        prerelease: false # <-- RELEASE
+        generate_release_notes: true
           
 
