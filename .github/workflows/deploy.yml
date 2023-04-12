@@ -33,10 +33,11 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
 
+    - name: Change directory (src)
+      run: cd src
+
     - name: Restore (dotnet restore)
-      run: |
-        cd src
-        dotnet restore --verbosity normal        
+      run: dotnet restore --verbosity normal        
     
     - name: Build (dotnet build)
       run: dotnet build --configuration $BUILD_CONFIG --no-restore
