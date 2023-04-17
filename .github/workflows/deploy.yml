@@ -107,7 +107,7 @@ jobs:
       with:
         name: sdk-artifacts
         path: ./sdk-artifacts
-    - name: Display structure of downloaded artifact files
+    - name: Display structure of downloaded sdk-artifacts files
       run: ls -R
       working-directory: ./sdk-artifacts
 
@@ -117,7 +117,7 @@ jobs:
       with:
         name: sdk-mongodb-artifacts
         path: ./sdk-mongodb-artifacts
-    - name: Display structure of downloaded artifact files
+    - name: Display structure of downloaded sdk-mongodb-artifacts files
       run: ls -R
       working-directory: ./sdk-mongodb-artifacts
 
@@ -152,7 +152,7 @@ jobs:
       with:
         name: sdk-artifacts
         path: ./sdk-artifacts
-    - name: Display structure of downloaded artifact files
+    - name: Display structure of downloaded sdk-artifacts files
       run: ls -R
       working-directory: ./sdk-artifacts
 
@@ -162,7 +162,7 @@ jobs:
       with:
         name: sdk-mongodb-artifacts
         path: ./sdk-mongodb-artifacts
-    - name: Display structure of downloaded artifact files
+    - name: Display structure of downloaded sdk-mongodb-artifacts files
       run: ls -R
       working-directory: ./sdk-mongodb-artifacts
 
@@ -192,9 +192,17 @@ jobs:
       with:
         name: sdk-artifacts
         path: ./sdk-artifacts
-    - name: Display structure of downloaded artifact files
+    - name: Display structure of downloaded sdk-artifacts files
       run: ls -R
       working-directory: ./sdk-artifacts
+    
+    # COMPRESS sdk-artifacts STAGE - CloudLab.SDK binaries
+    - name: Zip sdk-artifacts files
+      run: zip -r ./CloudLab.SDK.binaries.zip ./sdk-artifacts/
+    - name: Tar/GZip sdk-artifact files
+      run: tar -czvf ./CloudLab.SDK.binaries.tar.gz ./sdk-artifacts/
+    - name: List compressed sdk-artifacts files
+      run: ls -lA *.{zip,tar.gz}
 
     # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK.MongoDB binaries
     - name: Download sdk-mongodb-artifacts
@@ -202,10 +210,18 @@ jobs:
       with:
         name: sdk-mongodb-artifacts
         path: ./sdk-mongodb-artifacts
-    - name: Display structure of downloaded artifact files
+    - name: Display structure of downloaded sdk-mongodb-artifacts files
       run: ls -R
       working-directory: ./sdk-mongodb-artifacts
-    
+
+    # COMPRESS sdk-mongodb-artifacts STAGE - CloudLab.SDK.MongoDB binaries
+    - name: Zip sdk-mongodb-artifacts files
+      run: zip -r ./CloudLab.SDK.MongoDB.binaries.zip ./sdk-mongodb-artifacts/
+    - name: Tar/GZip sdk-artifact files
+      run: tar -czvf ./CloudLab.SDK.MongoDB.binaries.tar.gz ./sdk-mongodb-artifacts/
+    - name: List compressed sdk-mongodb-artifacts files
+      run: ls -lA *.{zip,tar.gz}
+
     # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-release'.
     - name: Create GitHub Pre-Release
       id: create-github-pre-release 
@@ -218,12 +234,8 @@ jobs:
         prerelease: true # <--- PRE RELEASE
         generate_release_notes: true
         files: |
-          ./sdk-artifacts/*
-          ./sdk-artifacts/net6.0/*
-          ./sdk-artifacts/net7.0/*
-          ./sdk-mongodb-artifacts/*
-          ./sdk-mongodb-artifacts/net6.0/*
-          ./sdk-mongodb-artifacts/net7.0/*
+          ./*.binaries.zip
+          ./*.binaries.tar.gz
         
     # CREATE GITHUB RELEASE STEP - When we do not have 'alpha' or 'beta' in the branch name, we mark the github release as 'release'.
     - name: Create GitHub Release
@@ -237,11 +249,7 @@ jobs:
         prerelease: false # <-- RELEASE
         generate_release_notes: true
         files: |
-          ./sdk-artifacts/*
-          ./sdk-artifacts/net6.0/*
-          ./sdk-artifacts/net7.0/*
-          ./sdk-mongodb-artifacts/*
-          ./sdk-mongodb-artifacts/net6.0/*
-          ./sdk-mongodb-artifacts/net7.0/*
+          ./*.binaries.zip
+          ./*.binaries.tar.gz
           
 
