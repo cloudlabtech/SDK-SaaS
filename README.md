@@ -5,7 +5,11 @@ In this SDK you'll find implementations of architectural patterns, cloud concept
 
 [![CodeQL](https://github.com/cloudlabtech/SDK/actions/workflows/codeql.yml/badge.svg?branch=main)](https://github.com/cloudlabtech/SDK/actions/workflows/codeql.yml)
 [![SDK Packages CI/CD](https://github.com/cloudlabtech/SDK/actions/workflows/deploy.yml/badge.svg)](https://github.com/cloudlabtech/SDK/actions/workflows/deploy.yml)
+![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/cloudlabtech/sdk?include_prereleases)
 ![Nuget](https://img.shields.io/nuget/v/CloudLab.SDK)
+![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/cloudlabtech/sdk)
+![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cloudlabtech/sdk)
+
 
 To learn more about this project, feel free to browse the following links:
 
