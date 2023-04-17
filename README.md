@@ -7,6 +7,7 @@ In this SDK you'll find implementations of architectural patterns, cloud concept
 [![SDK Packages CI/CD](https://github.com/cloudlabtech/SDK/actions/workflows/deploy.yml/badge.svg)](https://github.com/cloudlabtech/SDK/actions/workflows/deploy.yml)
 ![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/cloudlabtech/sdk?include_prereleases)
 ![Nuget](https://img.shields.io/nuget/v/CloudLab.SDK)
+
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/cloudlabtech/sdk)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cloudlabtech/sdk)
 
