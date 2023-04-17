@@ -66,8 +66,8 @@ jobs:
     - name: dotnet test CloudLab.SDK.MongoDB.Tests
       run: dotnet test ./src/CloudLab.SDK.MongoDB.Tests/CloudLab.SDK.MongoDB.Tests.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
 
-    # PUBLISH ARTIFACTS STEP - **/bin/Release/
-    - name: PUBLISH ARTIFACTS STAGE - CloudLab.SDK binaries
+    # PUBLISH ARTIFACTS STEP - CloudLab.SDK Binaries Artifacts
+    - name: Publish Artifacts CloudLab.SDK
       uses: actions/upload-artifact@v3
       with:
         name: sdk-artifacts
@@ -75,7 +75,8 @@ jobs:
         if-no-files-found: error
         retention-days: 7
 
-    - name: PUBLISH ARTIFACTS STAGE - CloudLab.SDK.MongoDB binaries
+    # PUBLISH ARTIFACTS STEP - CloudLab.SDK.MongoDB Binaries Artifacts
+    - name: Publish Artifacts CloudLab.SDK.MongoDB
       uses: actions/upload-artifact@v3
       with:
         name: sdk-mongodb-artifacts
@@ -184,6 +185,26 @@ jobs:
     # GIT CHECKOUT STEP - Get latest sources from git
     - name: Checkout source
       uses: actions/checkout@v3
+
+    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK binaries
+    - name: Download sdk-artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: sdk-artifacts
+        path: ./sdk-artifacts
+    - name: Display structure of downloaded artifact files
+      run: ls -R
+      working-directory: ./sdk-artifacts
+
+    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK.MongoDB binaries
+    - name: Download sdk-mongodb-artifacts
+      uses: actions/download-artifact@v3
+      with:
+        name: sdk-mongodb-artifacts
+        path: ./sdk-mongodb-artifacts
+    - name: Display structure of downloaded artifact files
+      run: ls -R
+      working-directory: ./sdk-mongodb-artifacts
     
     # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-release'.
     - name: Create GitHub Pre-Release
@@ -196,6 +217,9 @@ jobs:
         draft: false
         prerelease: true # <--- PRE RELEASE
         generate_release_notes: true
+        files: |
+          ./sdk-artifacts/
+          ./sdk-mongodb-artifacts/
         
     # CREATE GITHUB RELEASE STEP - When we do not have 'alpha' or 'beta' in the branch name, we mark the github release as 'release'.
     - name: Create GitHub Release
@@ -208,5 +232,8 @@ jobs:
         draft: false
         prerelease: false # <-- RELEASE
         generate_release_notes: true
+        files: |
+          ./sdk-artifacts/
+          ./sdk-mongodb-artifacts/
           
 
