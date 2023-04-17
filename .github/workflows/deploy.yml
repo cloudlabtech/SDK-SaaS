@@ -228,6 +228,9 @@ jobs:
     - name: List compressed sdk-mongodb-artifacts files
       run: ls -lA *.{zip,tar.gz}
 
+    - name: List files in current directory
+      run: ls -lA
+
     # CREATE GITHUB PRE-RELEASE STEP - When we have 'alpha' or 'beta' in the branch name, we mark the github  release as 'pre-release'.
     - name: Create GitHub Pre-Release
       id: create-github-pre-release 
@@ -240,9 +243,11 @@ jobs:
         prerelease: true # <--- PRE-RELEASE
         generate_release_notes: true
         files: |
-          ./*.binaries.zip
-          ./*.binaries.tar.gz
-        
+          CloudLab.SDK.$TAG_NAME-binaries.zip
+          CloudLab.SDK.$TAG_NAME-binaries.tar.gz
+          CloudLab.SDK.MongoDB.$TAG_NAME-binaries.zip
+          CloudLab.SDK.MongoDB.$TAG_NAME-binaries.tar.gz
+
     # CREATE GITHUB RELEASE STEP - When we do not have 'alpha' or 'beta' in the branch name, we mark the github release as 'release'.
     - name: Create GitHub Release
       id: create-github-release 
@@ -255,7 +260,9 @@ jobs:
         prerelease: false # <-- RELEASE
         generate_release_notes: true
         files: |
-          ./*.binaries.zip
-          ./*.binaries.tar.gz
+          CloudLab.SDK.$TAG_NAME-binaries.zip
+          CloudLab.SDK.$TAG_NAME-binaries.tar.gz
+          CloudLab.SDK.MongoDB.$TAG_NAME-binaries.zip
+          CloudLab.SDK.MongoDB.$TAG_NAME-binaries.tar.gz
           
 
