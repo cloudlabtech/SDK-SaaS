@@ -33,7 +33,7 @@ Thanks to the following contributors who have helped with the project:
 #### From contributor: Eric Roberto Darruiz - [@edarruiz][user_edarruiz]
 I personally thank all the great developers, projects and companies I had the opportunity to worked with in the past 24 years, through successes and failures, that made possible the vision and created the necessary skills to create this project today. Over countless years and hours of coding, testing, studying and improving, now I can share a little bit of what I've learned over the years, which I found useful and useless. I hope this content can help you with your projects and as a developer, with your life goals. I wish the best for you developer and technology person, the most successful things hoping you can improve, and one day in the future, share your knowledge with others.
 
-You can reach me out on eric@cloudlabtecnologia.com.br. Feel free to contact me ;)
+You can reach me out on eric[@]cloudlabtecnologia.com.br. Feel free to contact me ;)
 
 ## License
 This project is licensed under the [MIT License][license].
