@@ -173,11 +173,11 @@ jobs:
 
     # PUBLISH STEP - dotnet nuget push NuGet.org Package Repository for CloudLab.SDK binaries
     - name: Push CloudLab.SDK to NuGet.org Package Repository
-      run: dotnet nuget push ./sdk-artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate    
+      run: dotnet nuget push ./sdk-artifacts/*.nupkg --api-key ${{ secrets.CLOUDLAB_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate    
 
     # PUBLISH STEP - dotnet nuget push NuGet.org Package Repository for CloudLab.SDK.MongoDB binaries
     - name: Push CloudLab.SDK.MongoDB to NuGet.org Package Repository
-      run: dotnet nuget push ./sdk-mongodb-artifacts/*.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate    
+      run: dotnet nuget push ./sdk-mongodb-artifacts/*.nupkg --api-key ${{ secrets.CLOUDLAB_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate    
 
 #----- CREATE-GITHUB-RELEASE-STAGE -----  
   create-github-release:
