@@ -6,11 +6,11 @@ In this SDK you'll find implementations of architectural patterns, cloud concept
 This package supports [Source Link](https://learn.microsoft.com/en-us/dotnet/standard/library-guidance/sourcelink).
 
 ## Links
-- [Source](https://github.com/cloudlabtech/SDK)
-- [Documentation](https://github.com/cloudlabtech/SDK/wiki)
-- [Quickstart](https://github.com/cloudlabtech/SDK/wiki/Quickstart)
-- [Examples](https://github.com/cloudlabtech/SDK/wiki/Examples)
-- [Release Notes](https://github.com/cloudlabtech/SDK/wiki/Release-Notes)
+- [Source](https://github.com/cloudlabtech/SDK-SaaS)
+- [Documentation](https://github.com/cloudlabtech/SDK-SaaS/wiki)
+- [Quickstart](https://github.com/cloudlabtech/SDK-SaaS/wiki/Quickstart)
+- [Examples](https://github.com/cloudlabtech/SDK-SaaS/wiki/Examples)
+- [Release Notes](https://github.com/cloudlabtech/SDK-SaaS/wiki/Release-Notes)
 
 ## License
-This project is licensed under the [MIT License](https://github.com/cloudlabtech/SDK/blob/main/LICENSE)
+This project is licensed under the [MIT License](https://github.com/cloudlabtech/SDK-SaaS/blob/main/LICENSE)
