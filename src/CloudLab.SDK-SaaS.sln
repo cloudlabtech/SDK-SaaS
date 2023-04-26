@@ -5,16 +5,12 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D16EF420-4254-40A3-AB18-93C7AA1DAFC0}"
 	ProjectSection(SolutionItems) = preProject
-		LICENSE = LICENSE
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0ED5031A-5830-44C3-98BD-4F1659230C57}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK", "CloudLab.SDK\CloudLab.SDK.csproj", "{6D56AF04-5D85-4DDF-90A4-47EC4A6DF602}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK.MongoDB", "CloudLab.SDK.MongoDB\CloudLab.SDK.MongoDB.csproj", "{4C504053-AAC8-4EF2-AF22-3AD7B6CFA309}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK.Tests", "CloudLab.SDK.Tests\CloudLab.SDK.Tests.csproj", "{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{3B7E7DFD-B8F1-4A05-9F0F-F16673C89DF1}"
 	ProjectSection(SolutionItems) = preProject
@@ -25,37 +21,41 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "github", "github", "{3B7E7D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK.MongoDB.Tests", "CloudLab.SDK.MongoDB.Tests\CloudLab.SDK.MongoDB.Tests.csproj", "{A4557C0D-F80D-4E59-987A-26E82BF1F4D4}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK.SaaS", "CloudLab.SDK.SaaS\CloudLab.SDK.SaaS.csproj", "{09F3EF82-99FD-43B2-93C5-EDB6115D268B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK.SaaS.Tests", "CloudLab.SDK.SaaS.Tests\CloudLab.SDK.SaaS.Tests.csproj", "{36278822-327A-4523-BB88-5736D5A662F3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6D56AF04-5D85-4DDF-90A4-47EC4A6DF602}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6D56AF04-5D85-4DDF-90A4-47EC4A6DF602}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6D56AF04-5D85-4DDF-90A4-47EC4A6DF602}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6D56AF04-5D85-4DDF-90A4-47EC4A6DF602}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4C504053-AAC8-4EF2-AF22-3AD7B6CFA309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4C504053-AAC8-4EF2-AF22-3AD7B6CFA309}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C504053-AAC8-4EF2-AF22-3AD7B6CFA309}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C504053-AAC8-4EF2-AF22-3AD7B6CFA309}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09F3EF82-99FD-43B2-93C5-EDB6115D268B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09F3EF82-99FD-43B2-93C5-EDB6115D268B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09F3EF82-99FD-43B2-93C5-EDB6115D268B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09F3EF82-99FD-43B2-93C5-EDB6115D268B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36278822-327A-4523-BB88-5736D5A662F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36278822-327A-4523-BB88-5736D5A662F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36278822-327A-4523-BB88-5736D5A662F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36278822-327A-4523-BB88-5736D5A662F3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{6D56AF04-5D85-4DDF-90A4-47EC4A6DF602} = {D16EF420-4254-40A3-AB18-93C7AA1DAFC0}
 		{4C504053-AAC8-4EF2-AF22-3AD7B6CFA309} = {D16EF420-4254-40A3-AB18-93C7AA1DAFC0}
-		{9BAE31AE-490B-466A-8C53-8CB3B1FA16EF} = {0ED5031A-5830-44C3-98BD-4F1659230C57}
 		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4} = {0ED5031A-5830-44C3-98BD-4F1659230C57}
+		{09F3EF82-99FD-43B2-93C5-EDB6115D268B} = {D16EF420-4254-40A3-AB18-93C7AA1DAFC0}
+		{36278822-327A-4523-BB88-5736D5A662F3} = {0ED5031A-5830-44C3-98BD-4F1659230C57}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B72F861C-50E3-4CCB-82A4-2C1DDE7FA90E}
