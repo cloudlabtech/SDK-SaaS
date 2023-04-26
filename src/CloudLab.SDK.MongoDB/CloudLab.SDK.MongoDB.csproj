@@ -12,7 +12,7 @@
 		<Description>SDK used to build SaaS and Micro-SaaS for cloud platforms, especially for Microsoft Azure, using dotnet, netcore and C#. In this SDK you'll find implementations of architectural patterns, cloud concepts, tools and infrastructure details used to build any SaaS or Micro-SaaS solutions.
 		</Description>
 		<Copyright>Copyright (c) 2023 CloudLab Tech.</Copyright>
-		<PackageProjectUrl>https://github.com/cloudlabtech/SDK</PackageProjectUrl>
+		<PackageProjectUrl>https://www.nuget.org/packages/CloudLab.SDK.MongoDB/</PackageProjectUrl>
 		<Version>1.0.0-alpha.1</Version>
 		<Authors>CloudLab Tecnologia</Authors>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
