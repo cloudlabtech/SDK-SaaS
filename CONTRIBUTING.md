@@ -1,4 +1,6 @@
 # Contribution to CloudLab SDK <!-- omit in toc -->
+First, we'd like to thank you for wanting to contribute with our project!
+
 You can contribute to CloudLab SDK with issues and PRs. Simply filing issues for problems you encounter is a great way to contribute. Contributing implementations is greatly appreciated.
 
 We always welcome bug reports, new feature proposals and overall feedback. Here are a few tips and guidelines on how you can make reporting your issue as effective as possible:
@@ -7,8 +9,9 @@ We always welcome bug reports, new feature proposals and overall feedback. Here 
 - [Reporting Issues](#reporting-issues)
 - [Found a bug?](#found-a-bug)
 - [Want a new feature?](#want-a-new-feature)
+- [Found some documentation error?](#found-some-documentation-error)
 - [Submitting a Pull Request](#submitting-a-pull-request)
-- [Contributor License Agreement](#contributor-license-agreement)
+- [Contributor Licensing](#contributor-licensing)
 
 
 ## Have any questions or Problems?
@@ -25,42 +28,39 @@ Before filing a new issue, please search our [open issues][open_issues] to check
 If you do find an existing issue, please include your own feedback in the discussion. Do consider upvoting (👍 reaction) the original post, as this helps us prioritize popular issues in our roadmap.
 
 GitHub issues are used for the following reasons:
-- [Reporting bugs](#found-a-bug): should be marked with `bug` label and follow the bug report information guidelines as described in [Issue: Bug Report];
-- [New Feature requests](#want-a-new-feature): should be marked with `new-feature` label. 
-- TODO MORE
+- [Reporting bugs](#found-a-bug): should be marked with the `bug` label and follow the bug report information guidelines as described in [Issue: Bug Report];
+- [New Feature requests](#want-a-new-feature): should be marked with the `new-feature` label. 
+- [Documentation fixes](#found-some-documentation-error): should be marked with the `documentation` label.
 
+Every new issue create by contributors also should be marked with the `contribution` label.
 
 ## Found a bug?
-TODO
+If you found a bug or undesired code behavior when implementing your code while using the SDK, go to the [New Bug](https://github.com/cloudlabtech/SDK-SaaS/issues/new?assignees=&labels=bug&template=bug_report.yml) issue template and fill up the form with all relevant information. The more information you provide, we can understand quicker the root cause and act to fix the problem, publishing a new release with the due credits to you for helping us to improve our project.
 
 ## Want a new feature?
-TODO
+If you want to see a non-existing feature implemented in the SDK, go to the [New Feature Request](https://github.com/cloudlabtech/SDK-SaaS/issues/new?assignees=cloudlabtecnologia&labels=new-feature&template=feature_request.yml) issue template and fill up the form with all relevant information. 
+
+## Found some documentation error?
+If you found some documentation error in the code, open a [New Issue](https://github.com/cloudlabtech/SDK-SaaS/issues/new) and be sure to add both labels `bug` and `documentation` on your newly opened issue. As soon we find the error, we will correct the documentation and mention your name in the credits.
+
+If you want to contribute with the [Wiki](https://github.com/cloudlabtech/SDK-SaaS/wiki/) pages, please read the [Contributing to the Wiki pages guidelines](https://github.com/cloudlabtech/SDK-SaaS/wiki/How-to-Contribute-to-Wiki).
+
+Thanks to the following contributors who have helped with the project:
+- Eric Roberto Darruiz - [@edarruiz][user_edarruiz]
 
 ## Submitting a Pull Request
-TODO
+If you want to contribute with this project by providing code changes, improvements or bug fixes, you can do it by submiting Pull Requests on the `contrib` branch.
 
-## Contributor License Agreement
-By contributing your code to CloudLab SDK you grant CloudLab Tecnologia a non-exclusive, irrevocable, worldwide,
-royalty-free, sublicenseable, transferable license under all of Your relevant intellectual property rights
-(including copyright, patent, and any other rights), to use, copy, prepare derivative works of, distribute and
-publicly perform and display the Contributions on any licensing terms, including without limitation:
-(a) open source licenses like the MIT license; and (b) binary, proprietary, or commercial licenses. Except for the
-licenses granted herein, You reserve all right, title, and interest in and to the Contribution.
+Your pull request should follow the [Pull Request Template](https://github.com/cloudlabtech/SDK-SaaS/blob/main/.github/pull_request_template.md). This template will be written inside the comments section by default the moment you create a new pull request, where you can change it by editing the markdown contents or simply adding and filling up the information already provided.
 
-You confirm that you are able to grant us these rights. You represent that You are legally entitled to grant the
-above license. If Your employer has rights to intellectual property that You create, You represent that You have
-received permission to make the Contributions on behalf of that employer, or that Your employer has waived such
-rights for the Contributions.
+If your pull request is accepted after a review from the Architecture team, it will be merged in the `main` branch and you will be mentioned to the improvements made in this project, also, your GitHub profile will be added on the contributors section on the main page of this project. 
 
-You represent that the Contributions are Your original works of authorship, and to Your knowledge, no other person
-claims, or has the right to claim, any right in any invention or patent related to the Contributions. You also
-represent that You are not legally obligated, whether by entering into an agreement or otherwise, in any way that
-conflicts with the terms of this license.
+By doing this you are not just a contributor, you are now part of our project team and is a member of our community!
 
-CloudLab Tecnologia acknowledges that, except as explicitly described in this Agreement, any Contribution which
-you provide is on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED,
-INCLUDING, WITHOUT LIMITATION, ANY WARRANTIES OR CONDITIONS OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS
-FOR A PARTICULAR PURPOSE.
+## Contributor Licensing
+Before you contribute with this project, **you guarantee that you have read and agreed with the [MIT License](https://github.com/cloudlabtech/SDK-SaaS/blob/main/LICENSE)** provided and available in this project.
+
+Your contributions will be used within the same terms of the MIT license, for prior, current and future releases.
 
 [repo_url]: https://github.com/cloudlabtech/SDK
 [documentation]: https://github.com/cloudlabtech/SDK/blob/main/README.md#packages-and-documentation

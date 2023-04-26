@@ -29,7 +29,7 @@ To learn more about this project, feel free to browse the following links:
 | CloudLab.SDK.MongoDB | ![Nuget](https://img.shields.io/nuget/v/CloudLab.SDK.MongoDb) | MongoDB SDK |
 
 ## Contributors
-If you want to contribute with this project, please read the [contribution guidelines][contributing] and the [contributing wiki page][contributing_wiki].
+If you want to contribute with this project, please read the [contribution guidelines][contributing] and the [contribution to wiki page guidelines][contributing_wiki].
 
 Thanks to the following contributors who have helped with the project:
 - Eric Roberto Darruiz - [@edarruiz][user_edarruiz]

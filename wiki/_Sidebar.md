@@ -6,16 +6,16 @@
 - [[Packages]]
 - [[Roadmap]]
 - [[Releases]]
-
+- [[Release Notes]]
+  
 **Contributing**
 - [[Commit Convention]]
 - [[How to Contribute]]
-- [[Contributor License Agreement]]
 - [[How to Contribute to Wiki]]
 
 **Documentation**
+- [[SDK Documentation]]
 - [[Quickstart]]
 - [[Examples]]
 - [[CloudLab.SDK Package]]
 - [[CloudLab.SDK.MongoDB Package]]
-- [[Release Notes]]
