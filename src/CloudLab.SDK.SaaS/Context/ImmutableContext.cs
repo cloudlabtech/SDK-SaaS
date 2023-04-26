@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 
-namespace CloudLab.SDK.Context;
+namespace CloudLab.SDK.SaaS.Context;
 
 /// <summary>
 /// Represents the base environment for the objects that resides inside it and for which a policy can be enforced,

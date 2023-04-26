@@ -1,4 +1,4 @@
-﻿namespace CloudLab.SDK.Context;
+﻿namespace CloudLab.SDK.SaaS.Core;
 
 /// <summary>
 /// Represents the implementation contract for classes that supports initialization.

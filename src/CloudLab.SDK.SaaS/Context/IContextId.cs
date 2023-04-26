@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CloudLab.SDK.Context;
+namespace CloudLab.SDK.SaaS.Context;
 
 /// <summary>
 /// Represents the implementation contract for the ContextId properties.
