@@ -37,44 +37,44 @@ jobs:
       uses: actions/checkout@v3
 
     # RESTORE STEP - dotnet restore **/*.csproj
-    - name: dotnet restore CloudLab.SDK
-      run: dotnet restore ./src/CloudLab.SDK/CloudLab.SDK.csproj --verbosity detailed
+    - name: dotnet restore CloudLab.SDK.SaaS
+      run: dotnet restore ./src/CloudLab.SDK.SaaS/CloudLab.SDK.SaaS.csproj --verbosity detailed
 
     - name: dotnet restore CloudLab.SDK.MongoDB
       run: dotnet restore ./src/CloudLab.SDK.MongoDB/CloudLab.SDK.MongoDB.csproj --verbosity detailed
 
-    - name: dotnet restore CloudLab.SDK.Tests
-      run: dotnet restore ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj --verbosity detailed
+    - name: dotnet restore CloudLab.SDK.SaaS.Tests
+      run: dotnet restore ./src/CloudLab.SDK.SaaS.Tests/CloudLab.SDK.SaaS.Tests.csproj --verbosity detailed
 
     - name: dotnet restore CloudLab.SDK.MongoDB.Tests
       run: dotnet restore ./src/CloudLab.SDK.MongoDB.Tests/CloudLab.SDK.MongoDB.Tests.csproj --verbosity detailed
 
     # BUILD STEP - dotnet build **/*.csproj
-    - name: dotnet build CloudLab.SDK
-      run: dotnet build ./src/CloudLab.SDK/CloudLab.SDK.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
+    - name: dotnet build CloudLab.SDK.SaaS
+      run: dotnet build ./src/CloudLab.SDK.SaaS/CloudLab.SDK.SaaS.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
 
     - name: dotnet build CloudLab.SDK.MongoDB
       run: dotnet build ./src/CloudLab.SDK.MongoDB/CloudLab.SDK.MongoDB.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
 
-    - name: dotnet build CloudLab.SDK.Tests
-      run: dotnet build ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
+    - name: dotnet build CloudLab.SDK.SaaS.Tests
+      run: dotnet build ./src/CloudLab.SDK.SaaS.Tests/CloudLab.SDK.SaaS.Tests.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
 
     - name: dotnet build CloudLab.SDK.MongoDB.Tests
       run: dotnet build ./src/CloudLab.SDK.MongoDB.Tests/CloudLab.SDK.MongoDB.Tests.csproj --configuration $BUILD_CONFIG --no-restore --verbosity detailed
 
     # TEST STEP - dotnet test **/*.Tests.csproj
-    - name: dotnet test CloudLab.SDK.Tests
-      run: dotnet test ./src/CloudLab.SDK.Tests/CloudLab.SDK.Tests.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
+    - name: dotnet test CloudLab.SDK.SaaS.Tests
+      run: dotnet test ./src/CloudLab.SDK.SaaS.Tests/CloudLab.SDK.SaaS.Tests.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
 
     - name: dotnet test CloudLab.SDK.MongoDB.Tests
       run: dotnet test ./src/CloudLab.SDK.MongoDB.Tests/CloudLab.SDK.MongoDB.Tests.csproj --configuration $BUILD_CONFIG --no-restore --no-build --verbosity detailed
 
-    # PUBLISH ARTIFACTS STEP - CloudLab.SDK Binaries Artifacts
-    - name: Publish Artifacts CloudLab.SDK
+    # PUBLISH ARTIFACTS STEP - CloudLab.SDK.SaaS Binaries Artifacts
+    - name: Publish Artifacts CloudLab.SDK.SaaS
       uses: actions/upload-artifact@v3
       with:
-        name: sdk-artifacts
-        path: ./src/CloudLab.SDK/bin/Release/
+        name: sdk-saas-artifacts
+        path: ./src/CloudLab.SDK.SaaS/bin/Release/
         if-no-files-found: error
         retention-days: 7
 
@@ -105,15 +105,15 @@ jobs:
       with:
         dotnet-version: ${{ matrix.dotnet-version }}      
     
-    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK binaries
-    - name: Download sdk-artifacts
+    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK.SaaS binaries
+    - name: Download sdk-saas-artifacts
       uses: actions/download-artifact@v3
       with:
-        name: sdk-artifacts
-        path: ./sdk-artifacts
-    - name: Display structure of downloaded sdk-artifacts files
+        name: sdk-saas-artifacts
+        path: ./sdk-saas-artifacts
+    - name: Display structure of downloaded sdk-saas-artifacts files
       run: ls -R
-      working-directory: ./sdk-artifacts
+      working-directory: ./sdk-saas-artifacts
 
     # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK.MongoDB binaries
     - name: Download sdk-mongodb-artifacts
@@ -125,9 +125,9 @@ jobs:
       run: ls -R
       working-directory: ./sdk-mongodb-artifacts
 
-    # PUBLISH STEP - dotnet nuget push GitHub Package Repository for CloudLab.SDK binaries
-    - name: Push CloudLab.SDK to GitHub Package Repository
-      run: dotnet nuget push ./sdk-artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
+    # PUBLISH STEP - dotnet nuget push GitHub Package Repository for CloudLab.SDK.SaaS binaries
+    - name: Push CloudLab.SDK.SaaS to GitHub Package Repository
+      run: dotnet nuget push ./sdk-saas-artifacts/*.nupkg --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/cloudlabtech/index.json" --skip-duplicate
 
     # PUBLISH STEP - dotnet nuget push GitHub Package Repository for CloudLab.SDK.MongoDB binaries
     - name: Push CloudLab.SDK.MongoDB to GitHub Package Repository
@@ -151,15 +151,15 @@ jobs:
       with:
         dotnet-version: ${{ matrix.dotnet-version }}      
     
-    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK binaries
-    - name: Download sdk-artifacts
+    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK.SaaS binaries
+    - name: Download sdk-saas-artifacts
       uses: actions/download-artifact@v3
       with:
-        name: sdk-artifacts
-        path: ./sdk-artifacts
-    - name: Display structure of downloaded sdk-artifacts files
+        name: sdk-saas-artifacts
+        path: ./sdk-saas-artifacts
+    - name: Display structure of downloaded sdk-saas-artifacts files
       run: ls -R
-      working-directory: ./sdk-artifacts
+      working-directory: ./sdk-saas-artifacts
 
     # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK.MongoDB binaries
     - name: Download sdk-mongodb-artifacts
@@ -171,9 +171,9 @@ jobs:
       run: ls -R
       working-directory: ./sdk-mongodb-artifacts
 
-    # PUBLISH STEP - dotnet nuget push NuGet.org Package Repository for CloudLab.SDK binaries
+    # PUBLISH STEP - dotnet nuget push NuGet.org Package Repository for CloudLab.SDK.SaaS binaries
     - name: Push CloudLab.SDK to NuGet.org Package Repository
-      run: dotnet nuget push ./sdk-artifacts/*.nupkg --api-key ${{ secrets.CLOUDLAB_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate    
+      run: dotnet nuget push ./sdk-saas-artifacts/*.nupkg --api-key ${{ secrets.CLOUDLAB_NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json --skip-duplicate    
 
     # PUBLISH STEP - dotnet nuget push NuGet.org Package Repository for CloudLab.SDK.MongoDB binaries
     - name: Push CloudLab.SDK.MongoDB to NuGet.org Package Repository
@@ -192,22 +192,22 @@ jobs:
     - name: Checkout source
       uses: actions/checkout@v3
 
-    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK binaries
-    - name: Download sdk-artifacts
+    # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK.SaaS binaries
+    - name: Download sdk-saas-artifacts
       uses: actions/download-artifact@v3
       with:
-        name: sdk-artifacts
-        path: ./sdk-artifacts
-    - name: Display structure of downloaded sdk-artifacts files
+        name: sdk-saas-artifacts
+        path: ./sdk-saas-artifacts
+    - name: Display structure of downloaded sdk-saas-artifacts files
       run: ls -R
-      working-directory: ./sdk-artifacts
+      working-directory: ./sdk-saas-artifacts
     
-    # COMPRESS sdk-artifacts STAGE - CloudLab.SDK binaries
-    - name: Zip sdk-artifacts files
-      run: zip -r ./CloudLab.SDK.$TAG_NAME-binaries.zip ./sdk-artifacts/
+    # COMPRESS sdk-saas-artifacts STAGE - CloudLab.SDK.SaaS binaries
+    - name: Zip sdk-saas-artifacts files
+      run: zip -r ./CloudLab.SDK.SaaS.$TAG_NAME-binaries.zip ./sdk-saas-artifacts/
     - name: Tar/GZip sdk-artifact files
-      run: tar -czvf ./CloudLab.SDK.$TAG_NAME-binaries.tar.gz ./sdk-artifacts/
-    - name: List compressed sdk-artifacts files
+      run: tar -czvf ./CloudLab.SDK.SaaS.$TAG_NAME-binaries.tar.gz ./sdk-saas-artifacts/
+    - name: List compressed sdk-saas-artifacts files
       run: ls -lA *.{zip,tar.gz}
 
     # DOWNLOAD ARTIFACTS STEP - CloudLab.SDK.MongoDB binaries
@@ -243,8 +243,8 @@ jobs:
         prerelease: true # <--- PRE-RELEASE
         generate_release_notes: true
         files: |
-          CloudLab.SDK.${{ github.ref_name }}-binaries.zip
-          CloudLab.SDK.${{ github.ref_name }}-binaries.tar.gz
+          CloudLab.SDK.SaaS.${{ github.ref_name }}-binaries.zip
+          CloudLab.SDK.SaaS.${{ github.ref_name }}-binaries.tar.gz
           CloudLab.SDK.MongoDB.${{ github.ref_name }}-binaries.zip
           CloudLab.SDK.MongoDB.${{ github.ref_name }}-binaries.tar.gz
 
@@ -260,8 +260,8 @@ jobs:
         prerelease: false # <-- RELEASE
         generate_release_notes: true
         files: |
-          CloudLab.SDK.${{ github.ref_name }}-binaries.zip
-          CloudLab.SDK.${{ github.ref_name }}-binaries.tar.gz
+          CloudLab.SDK.SaaS.${{ github.ref_name }}-binaries.zip
+          CloudLab.SDK.SaaS.${{ github.ref_name }}-binaries.tar.gz
           CloudLab.SDK.MongoDB.${{ github.ref_name }}-binaries.zip
           CloudLab.SDK.MongoDB.${{ github.ref_name }}-binaries.tar.gz
           
