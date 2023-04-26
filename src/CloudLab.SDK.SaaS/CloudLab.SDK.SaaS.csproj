@@ -11,7 +11,7 @@
 		<Description>SDK used to build SaaS and Micro-SaaS for cloud platforms, especially for Microsoft Azure, using dotnet, netcore and C#. In this SDK you'll find implementations of architectural patterns, cloud concepts, tools and infrastructure details used to build any SaaS or Micro-SaaS solutions.</Description>
 		<Copyright>Copyright (c) 2023 CloudLab Tecnologia.</Copyright>
 		<PackageProjectUrl>https://www.nuget.org/packages/CloudLab.SDK.SaaS/</PackageProjectUrl>
-		<Version>1.0.0-alpha.1</Version>
+		<Version>1.0.0-alpha.2</Version>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<PackageReleaseNotes>https://github.com/cloudlabtech/SDK-SaaS/wiki/Release-Notes</PackageReleaseNotes>
 		<PackageTags>cloud;sdk;csharp;message-bus;saas;microservices-architecture;ddd-patterns;saas-tools;building-blocks-cloud-services</PackageTags>
