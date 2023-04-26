@@ -13,10 +13,10 @@
 		<PackageProjectUrl>https://www.nuget.org/packages/CloudLab.SDK.MongoDB/</PackageProjectUrl>
 		<Version>1.0.0-alpha.1</Version>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<PackageReleaseNotes>https://github.com/cloudlabtech/SDK/wiki/Release-Notes</PackageReleaseNotes>
+		<PackageReleaseNotes>https://github.com/cloudlabtech/SDK-SaaS/wiki/Release-Notes</PackageReleaseNotes>
 		<PackageTags>cloud;sdk;csharp;message-bus;saas;microservices-architecture;nosql-database;ddd-patterns;saas-tools;building-blocks-cloud-services</PackageTags>
 		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>https://github.com/cloudlabtech/SDK</RepositoryUrl>
+		<RepositoryUrl>https://github.com/cloudlabtech/SDK-SaaS</RepositoryUrl>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
