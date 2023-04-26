@@ -21,10 +21,10 @@ To learn more about this project, feel free to browse the following links:
 - [Roadmap][roadmap_wiki]
 
 ## Package Versions
-| Package Name | Version |
-| ------------ | ------- |
-| CloudLab.SDK.SaaS | ![Nuget](https://img.shields.io/nuget/v/CloudLab.SDK.SaaS) |
-| CloudLab.SDK.MongoDB | ![Nuget](https://img.shields.io/nuget/v/CloudLab.SDK.MongoDb) |
+| Package Name | Version | Description |
+| ------------ | ------- | ----------- |
+| CloudLab.SDK.SaaS | ![Nuget](https://img.shields.io/nuget/v/CloudLab.SDK.SaaS) | SaaS SDK |
+| CloudLab.SDK.MongoDB | ![Nuget](https://img.shields.io/nuget/v/CloudLab.SDK.MongoDb) | MongoDB SDK |
 
 ## Contributors
 If you want to contribute with this project, please read the [contribution guidelines][contributing] and the [contributing wiki page][contributing_wiki].
