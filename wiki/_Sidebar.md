@@ -17,5 +17,3 @@
 - [[SDK Documentation]]
 - [[Quickstart]]
 - [[Examples]]
-- [[CloudLab.SDK Package]]
-- [[CloudLab.SDK.MongoDB Package]]

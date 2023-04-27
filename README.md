@@ -11,16 +11,17 @@ There are several packages in this project, each one with its own cloud tecnolog
 ![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/cloudlabtech/sdk)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/cloudlabtech/sdk)
 
-To learn more about this project, feel free to browse the following links:
+To learn more about this project, feel free to browse the following links of our wiki pages:
 
-- [Background and the Vision][background_wiki]
-- [The SaaS Building Blocks][saas_building_blocks_wiki]
-  - [Concepts][concepts_wiki]
-  - [Features][features_wiki]
-  - [Packages][packages_wiki]
-  - [Quickstart][quickstart_wiki]
-  - [Examples][examples_wiki]
-- [Roadmap][roadmap_wiki]
+## The Project
+- [Background and the Vision](https://github.com/cloudlabtech/SDK-SaaS/wiki/Background-and-the-Vision)
+- [The SaaS Building Blocks](https://github.com/cloudlabtech/SDK-SaaS/wiki/The-SaaS-Building-Blocks)
+- [Concepts](https://github.com/cloudlabtech/SDK-SaaS/wiki/Concepts)
+- [Features](https://github.com/cloudlabtech/SDK-SaaS/wiki/Features)
+- [Packages](https://github.com/cloudlabtech/SDK-SaaS/wiki/Packages)
+- [Roadmap](https://github.com/cloudlabtech/SDK-SaaS/wiki/Roadmap)
+- [Releases](https://github.com/cloudlabtech/SDK-SaaS/wiki/Releases)
+- [Release Notes](https://github.com/cloudlabtech/SDK-SaaS/wiki/Release-Notes)
 
 ## Package Versions
 | Package Name | Version | Description |
@@ -28,24 +29,22 @@ To learn more about this project, feel free to browse the following links:
 | CloudLab.SDK.SaaS | ![Nuget](https://img.shields.io/nuget/v/CloudLab.SDK.SaaS) | SaaS SDK |
 | CloudLab.SDK.MongoDB | ![Nuget](https://img.shields.io/nuget/v/CloudLab.SDK.MongoDb) | MongoDB SDK |
 
-## Contributors
-If you want to contribute with this project, please read the [contribution guidelines][contributing] and the [contribution to wiki page guidelines][contributing_wiki].
+## Contributing
+If you want to contribute with this project, please refer to:
+- [Commit Convention Guidelines](https://github.com/cloudlabtech/SDK-SaaS/wiki/Commit-Convention).
+- [Contribution Guidelines](https://github.com/cloudlabtech/SDK-SaaS/blob/main/CONTRIBUTING.md)
+- [Contribution to Wiki Pages Guidelines](https://github.com/cloudlabtech/SDK-SaaS/wiki/How-to-Contribute-to-Wiki)
 
 Thanks to the following contributors who have helped with the project:
-- Eric Roberto Darruiz - [@edarruiz][user_edarruiz]
+- Eric Roberto Darruiz - [@edarruiz](https://github.com/edarruiz)
+
+## Documentation
+All documentation for this project can be found in the [SDK Documentation](https://github.com/cloudlabtech/SDK-SaaS/wiki/SDK-Documentation) wiki page.
+
+Also in the wiki, you can find:
+- [Quickstart](https://github.com/cloudlabtech/SDK-SaaS/wiki/Quickstart)
+- [Examples](https://github.com/cloudlabtech/SDK-SaaS/wiki/Examples)
+
 
 ## License
-This project is licensed under the [MIT License][license].
-
-[background_wiki]: https://github.com/cloudlabtech/SDK-SaaS/wiki/Background-and-the-Vision
-[saas_building_blocks_wiki]: https://github.com/cloudlabtech/SDK-SaaS/wiki/The-Saas-Building-Blocks
-[concepts_wiki]: https://github.com/cloudlabtech/SDK-SaaS/wiki/Concepts
-[features_wiki]: https://github.com/cloudlabtech/SDK-SaaS/wiki/Features
-[packages_wiki]: https://github.com/cloudlabtech/SDK-SaaS/wiki/Packages
-[quickstart_wiki]: https://github.com/cloudlabtech/SDK-SaaS/wiki/Quickstart
-[examples_wiki]: https://github.com/cloudlabtech/SDK-SaaS/wiki/Examples
-[roadmap_wiki]: https://github.com/cloudlabtech/SDK-SaaS/wiki/Roadmap
-[contributing]: https://github.com/cloudlabtech/SDK-SaaS/blob/main/CONTRIBUTING.md
-[contributing_wiki]: https://github.com/cloudlabtech/SDK-SaaS/wiki/How-to-Contribute-to-Wiki
-[user_edarruiz]: https://github.com/edarruiz
-[license]: https://github.com/cloudlabtech/SDK-SaaS/blob/main/LICENSE
+This project is licensed under the [MIT License](https://github.com/cloudlabtech/SDK-SaaS/blob/main/LICENSE).
