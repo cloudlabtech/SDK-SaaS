@@ -11,7 +11,7 @@ This type of context is a read-write informational context.
 public interface IContext : IContextId, CloudLab.SDK.SaaS.Core.IInitialization
 ```
 
-Implements [IContextId](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.icontextid.md), [IInitialization](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.core.iinitialization.md)
+Implements [IContextId](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.icontextid), [IInitialization](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.core.iinitialization)
 
 **Remarks:**
 
@@ -51,6 +51,6 @@ IImmutableContext ToImmutableContext()
 
 #### Returns
 
-[IImmutableContext](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.iimmutablecontext.md)<br>
+[IImmutableContext](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.iimmutablecontext)<br>
 Returns a  representing the converted read-only immutable
             context or null when the current context could not be converted to a read-only immutable context.
