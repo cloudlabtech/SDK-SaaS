@@ -22,38 +22,40 @@ Write-Host "Converting Xml documentation to Markdown for CloudLab.SDK.MongoDB...
 xmldoc2md ./src/CloudLab.SDK.MongoDB/bin/Release/net6.0/CloudLab.SDK.MongoDB.dll ./src/CloudLab.SDK.MongoDB/bin/Release/net6.0/docs
 
 # Create Markdown files for Wiki
-Write-Host "Removing wiki docs folder..." -Foreground yellow
-Remove-Item -LiteralPath ./wiki/docs -Force -Recurse
-
-Write-Host "Creating wiki docs folder..." -Foreground yellow
-New-Item -ItemType "directory" -Path ./wiki/docs -Force
 
 # CloudLab.SDK.SaaS documentation
-Write-Host "Copying auto-generated Markdown files for CloudLab.SDK.SaaS wiki docs folder..." -Foreground yellow
-$FILES = Copy-Item -Path ./src/CloudLab.SDK.SaaS/bin/Release/net6.0/docs/* -Destination ./wiki/docs -Recurse -Exclude index.md -Force -PassThru | ?{$_ -is [System.IO.FileInfo]}
+Write-Host "Updating URLS on auto-generated Markdown files for CloudLab.SDK.SaaS wiki..." -Foreground yellow
+$FILE_PATH = "./src/CloudLab.SDK.SaaS/bin/Release/net6.0/docs/*.md"
+Get-ChildItem $FILE_PATH -Recurse | ForEach-Object { (Get-Content $_).Replace("(./cloudlab.sdk.saas", "(https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas") | Set-Content $_ }
+
+Write-Host "Copying auto-generated Markdown files for CloudLab.SDK.SaaS wiki..." -Foreground yellow
+$FILES = Copy-Item -Path ./src/CloudLab.SDK.SaaS/bin/Release/net6.0/docs/* -Destination ./wiki -Exclude index.md -Force -PassThru | ?{$_ -is [System.IO.FileInfo]}
 $FILES
 
-Write-Host "Creating Markdown index file for CloudLab.SDK.SaaS wiki docs folder..." -Foreground yellow
-New-Item -Path ./wiki/docs/ -Name cloudlab.sdk.saas.index.md -ItemType "file" -Value "# CloudLab.SDK.SaaS Documentation`r`nThis is the index page of the source-code documentation for the **CloudLab.SDK.SaaS** library.`r`n`n" -Force
+Write-Host "Creating Markdown index file for CloudLab.SDK.SaaS wiki..." -Foreground yellow
+New-Item -Path ./wiki -Name cloudlab.sdk.saas.index.md -ItemType "file" -Value "# CloudLab.SDK.SaaS Documentation`r`nThis is the index page of the source-code documentation for the **CloudLab.SDK.SaaS** library.`r`n`n" -Force
 $SAAS_MD_INDEX = Get-Content -Path ./src/CloudLab.SDK.SaaS/bin/Release/net6.0/docs/index.md | Select -Skip 2
-$SAAS_MD_CONTENT = $SAAS_MD_INDEX.replace("(./cloudlab.sdk.saas", "(./docs/cloudlab.sdk.saas")
-Add-Content -Path ./wiki/docs/cloudlab.sdk.saas.index.md -Value $SAAS_MD_CONTENT
+Add-Content -Path ./wiki/cloudlab.sdk.saas.index.md -Value $SAAS_MD_INDEX
 
-Write-Host "Removing auto-generated Markdown files for CloudLab.SDK.SaaS for Release folder..." -Foreground yellow
+Write-Host "Removing auto-generated Markdown files for CloudLab.SDK.SaaS Release folder..." -Foreground yellow
 Remove-Item ./src/CloudLab.SDK.SaaS/bin/Release/net6.0/docs/ -Recurse
 
-# CloudLab.SDK.SaaS documentation
-Write-Host "Copying auto-generated Markdown files for CloudLab.SDK.MongoDB wiki docs folder..." -Foreground yellow
-$FILES = Copy-Item -Path ./src/CloudLab.SDK.MongoDB/bin/Release/net6.0/docs/* -Destination ./wiki/docs -Recurse -Exclude index.md -Force -PassThru | ?{$_ -is [System.IO.FileInfo]}
+# CloudLab.SDK.MongoDB documentation
+Write-Host "Updating URLS on auto-generated Markdown files for CloudLab.SDK.MongoDB wiki..." -Foreground yellow
+$FILE_PATH = "./src/CloudLab.SDK.MongoDB/bin/Release/net6.0/docs/*.md"
+Get-ChildItem $FILE_PATH -Recurse | ForEach-Object { (Get-Content $_).Replace("(./cloudlab.sdk.mongodb", "(https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.mongodb") | Set-Content $_ }
+
+Write-Host "Copying auto-generated Markdown files for CloudLab.SDK.MongoDB wiki..." -Foreground yellow
+$FILES = Copy-Item -Path ./src/CloudLab.SDK.MongoDB/bin/Release/net6.0/docs/* -Destination ./wiki -Exclude index.md -Force -PassThru | ?{$_ -is [System.IO.FileInfo]}
 $FILES
 
-Write-Host "Creating Markdown index file for CloudLab.SDK.MongoDB wiki docs folder..." -Foreground yellow
-New-Item -Path ./wiki/docs/ -Name cloudlab.sdk.mongodb.index.md -ItemType "file" -Value "# CloudLab.SDK.MongoDB Documentation`r`nThis is the index page of the source-code documentation for the **CloudLab.SDK.MongoDB** library.`r`n`n" -Force
+Write-Host "Creating Markdown index file for CloudLab.SDK.MongoDB wiki..." -Foreground yellow
+New-Item -Path ./wiki -Name cloudlab.sdk.mongodb.index.md -ItemType "file" -Value "# CloudLab.SDK.MongoDB Documentation`r`nThis is the index page of the source-code documentation for the **CloudLab.SDK.MongoDB** library.`r`n`n" -Force
 $MONGODB_MD_INDEX = Get-Content -Path ./src/CloudLab.SDK.MongoDB/bin/Release/net6.0/docs/index.md | Select -Skip 2
-$MONGODB_MD_CONTENT = $MONGODB_MD_INDEX.replace("(./cloudlab.sdk.mongodb", "(./docs/cloudlab.sdk.mongodb")
-Add-Content -Path ./wiki/docs/cloudlab.sdk.mongodb.index.md -Value $MONGODB_MD_CONTENT
+Add-Content -Path ./wiki/cloudlab.sdk.mongodb.index.md -Value $MONGODB_MD_INDEX
 
-Write-Host "Removing auto-generated Markdown files for CloudLab.SDK.SaaS for Release folder..." -Foreground yellow
+Write-Host "Removing auto-generated Markdown files for CloudLab.SDK.MongoDB Release folder..." -Foreground yellow
 Remove-Item ./src/CloudLab.SDK.MongoDB/bin/Release/net6.0/docs/ -Recurse
 
-Write-Output "*** DONE! ***" -Foreground yellow -Background 
+
+Write-Host "*** DONE! ***" -Foreground yellow

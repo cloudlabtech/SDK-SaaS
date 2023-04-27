@@ -1,17 +1,17 @@
-# IContext
+# IImmutableContext
 
 Namespace: CloudLab.SDK.SaaS.Context
 
 Represents the base environment for the objects that resides inside it and for which a policy can be enforced,
  which is the default building block for sharing information inside the application.
 
-This type of context is a read-write informational context.
+This type of context is a read-only immutable informational context.
 
 ```csharp
-public interface IContext : IContextId, CloudLab.SDK.SaaS.Core.IInitialization
+public interface IImmutableContext : IContextId, CloudLab.SDK.SaaS.Core.IInitialization
 ```
 
-Implements [IContextId](./cloudlab.sdk.saas.context.icontextid.md), [IInitialization](./cloudlab.sdk.saas.core.iinitialization.md)
+Implements [IContextId](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.icontextid.md), [IInitialization](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.core.iinitialization.md)
 
 **Remarks:**
 
@@ -28,29 +28,34 @@ Also, a context can be used together with design-pattern and business concepts, 
 
 ### **Properties**
 
-Gets or sets the custom-properties available of the context, representing a collection of
+Gets the custom-properties available of the context, representing a collection of
  key/value pairs, where the key is always a string, and the value is always an object.
 
 ```csharp
-public abstract IDictionary<string, object> Properties { get; }
+public abstract IImmutableDictionary<string, object> Properties { get; }
 ```
 
 #### Property Value
 
-[IDictionary&lt;String, Object&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.idictionary-2)<br>
+IImmutableDictionary&lt;String, Object&gt;<br>
+
+**Remarks:**
+
+This collection is immutable and cannot be changed in runtime. To initialize the 
+ , use the default class constructor.
 
 ## Methods
 
-### **ToImmutableContext()**
+### **ToContext()**
 
-Converts the read-write context to an immutable context.
+Converts the immutable context to a read-write context.
 
 ```csharp
-IImmutableContext ToImmutableContext()
+IContext ToContext()
 ```
 
 #### Returns
 
-[IImmutableContext](./cloudlab.sdk.saas.context.iimmutablecontext.md)<br>
-Returns a  representing the converted read-only immutable
-            context or null when the current context could not be converted to a read-only immutable context.
+[IContext](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.icontext.md)<br>
+Returns a  representing the converted read-write context or 
+            null when the current context could not be converted to a read-write context.

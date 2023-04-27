@@ -11,8 +11,8 @@ This type of context is a read-write informational context.
 public abstract class Context : IContext, IContextId, CloudLab.SDK.SaaS.Core.IInitialization
 ```
 
-Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [Context](./cloudlab.sdk.saas.context.context.md)<br>
-Implements [IContext](./cloudlab.sdk.saas.context.icontext.md), [IContextId](./cloudlab.sdk.saas.context.icontextid.md), [IInitialization](./cloudlab.sdk.saas.core.iinitialization.md)
+Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [Context](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.context.md)<br>
+Implements [IContext](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.icontext.md), [IContextId](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.icontextid.md), [IInitialization](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.core.iinitialization.md)
 
 **Remarks:**
 
@@ -61,7 +61,7 @@ public bool IsInitialized { get; }
 
 ### **Context()**
 
-Initializes a new instance of the [Context](./cloudlab.sdk.saas.context.context.md) class.
+Initializes a new instance of the [Context](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.context.md) class.
 
 ```csharp
 public Context()
@@ -87,4 +87,4 @@ public abstract IImmutableContext ToImmutableContext()
 
 #### Returns
 
-[IImmutableContext](./cloudlab.sdk.saas.context.iimmutablecontext.md)<br>
+[IImmutableContext](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.iimmutablecontext.md)<br>

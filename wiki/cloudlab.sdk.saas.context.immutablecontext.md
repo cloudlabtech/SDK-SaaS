@@ -11,8 +11,8 @@ This type of context is a read-only immutable informational context.
 public abstract class ImmutableContext : IImmutableContext, IContextId, CloudLab.SDK.SaaS.Core.IInitialization
 ```
 
-Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [ImmutableContext](./cloudlab.sdk.saas.context.immutablecontext.md)<br>
-Implements [IImmutableContext](./cloudlab.sdk.saas.context.iimmutablecontext.md), [IContextId](./cloudlab.sdk.saas.context.icontextid.md), [IInitialization](./cloudlab.sdk.saas.core.iinitialization.md)
+Inheritance [Object](https://docs.microsoft.com/en-us/dotnet/api/system.object) → [ImmutableContext](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.immutablecontext.md)<br>
+Implements [IImmutableContext](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.iimmutablecontext.md), [IContextId](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.icontextid.md), [IInitialization](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.core.iinitialization.md)
 
 **Remarks:**
 
@@ -61,9 +61,9 @@ public bool IsInitialized { get; }
 
 ### **ImmutableContext(Guid, Dictionary&lt;String, Object&gt;)**
 
-Initializes a new instance of the [ImmutableContext](./cloudlab.sdk.saas.context.immutablecontext.md) class with the
+Initializes a new instance of the [ImmutableContext](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.immutablecontext.md) class with the
  specified [Guid](https://docs.microsoft.com/en-us/dotnet/api/system.guid) and [Dictionary&lt;TKey, TValue&gt;](https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.dictionary-2) used as default
- values for the properties [ImmutableContext.ContextId](./cloudlab.sdk.saas.context.immutablecontext.md#contextid) and [ImmutableContext.Properties](./cloudlab.sdk.saas.context.immutablecontext.md#properties), respectively.
+ values for the properties [ImmutableContext.ContextId](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.immutablecontext.md#contextid) and [ImmutableContext.Properties](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.immutablecontext.md#properties), respectively.
 
 ```csharp
 public ImmutableContext(Guid contextId, Dictionary<string, object> contextProperties)
@@ -97,4 +97,4 @@ public abstract IContext ToContext()
 
 #### Returns
 
-[IContext](./cloudlab.sdk.saas.context.icontext.md)<br>
+[IContext](https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas.context.icontext.md)<br>
