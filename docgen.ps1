@@ -27,6 +27,7 @@ xmldoc2md ./src/CloudLab.SDK.MongoDB/bin/Release/net6.0/CloudLab.SDK.MongoDB.dll
 Write-Host "Updating URLS on auto-generated Markdown files for CloudLab.SDK.SaaS wiki..." -Foreground yellow
 $FILE_PATH = "./src/CloudLab.SDK.SaaS/bin/Release/net6.0/docs/*.md"
 Get-ChildItem $FILE_PATH -Recurse | ForEach-Object { (Get-Content $_).Replace("(./cloudlab.sdk.saas", "(https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.saas") | Set-Content $_ }
+Get-ChildItem $FILE_PATH -Recurse | ForEach-Object { (Get-Content $_).Replace(".md)", ")") | Set-Content $_ }
 
 Write-Host "Copying auto-generated Markdown files for CloudLab.SDK.SaaS wiki..." -Foreground yellow
 $FILES = Copy-Item -Path ./src/CloudLab.SDK.SaaS/bin/Release/net6.0/docs/* -Destination ./wiki -Exclude index.md -Force -PassThru | ?{$_ -is [System.IO.FileInfo]}
@@ -44,6 +45,8 @@ Remove-Item ./src/CloudLab.SDK.SaaS/bin/Release/net6.0/docs/ -Recurse
 Write-Host "Updating URLS on auto-generated Markdown files for CloudLab.SDK.MongoDB wiki..." -Foreground yellow
 $FILE_PATH = "./src/CloudLab.SDK.MongoDB/bin/Release/net6.0/docs/*.md"
 Get-ChildItem $FILE_PATH -Recurse | ForEach-Object { (Get-Content $_).Replace("(./cloudlab.sdk.mongodb", "(https://github.com/cloudlabtech/SDK-SaaS/wiki/cloudlab.sdk.mongodb") | Set-Content $_ }
+Get-ChildItem $FILE_PATH -Recurse | ForEach-Object { (Get-Content $_).Replace(".md)", ")") | Set-Content $_ }
+
 
 Write-Host "Copying auto-generated Markdown files for CloudLab.SDK.MongoDB wiki..." -Foreground yellow
 $FILES = Copy-Item -Path ./src/CloudLab.SDK.MongoDB/bin/Release/net6.0/docs/* -Destination ./wiki -Exclude index.md -Force -PassThru | ?{$_ -is [System.IO.FileInfo]}
