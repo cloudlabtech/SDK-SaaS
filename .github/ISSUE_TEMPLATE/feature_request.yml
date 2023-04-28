@@ -1,6 +1,7 @@
 name: New Feature Request
 description: Suggest an idea for this project
-labels: [new-feature]
+labels: [new-feature, contributing]
+assignees: cloudlabtecnologia
 body: 
   - type: markdown
     attributes:
@@ -109,5 +110,3 @@ body:
       label: SaaS Business Value
       description: Describe in full details what is the business value this new feature will bring to SaaS or Micro-SaaS solutions in the market.
       placeholder: A clear and consise description of what business value will this feature bring to the SaaS or Micro-SaaS solutions.
-assignees:
-  - cloudlabtecnologia  
