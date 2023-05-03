@@ -1,3 +1,5 @@
+![ai-banner](media/images/ai-banner.png)
+
 # The CloudLab Software Development Kit for SaaS (SDK)
 This project refers to a SDK used to build SaaS and Micro-SaaS for cloud platforms, especially for Microsoft Azure, using dotnet, netcore and C#.
 
