@@ -4,9 +4,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D16EF420-4254-40A3-AB18-93C7AA1DAFC0}"
-	ProjectSection(SolutionItems) = preProject
-		Directory.Build.props = Directory.Build.props
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{0ED5031A-5830-44C3-98BD-4F1659230C57}"
 EndProject
@@ -24,6 +21,11 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK.SaaS", "CloudLab.SDK.SaaS\CloudLab.SDK.SaaS.csproj", "{09F3EF82-99FD-43B2-93C5-EDB6115D268B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CloudLab.SDK.SaaS.Tests", "CloudLab.SDK.SaaS.Tests\CloudLab.SDK.SaaS.Tests.csproj", "{36278822-327A-4523-BB88-5736D5A662F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "sdk", "sdk", "{DB497936-B1D6-49AD-BBD1-F253EA739B7A}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -52,10 +54,11 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{4C504053-AAC8-4EF2-AF22-3AD7B6CFA309} = {D16EF420-4254-40A3-AB18-93C7AA1DAFC0}
+		{4C504053-AAC8-4EF2-AF22-3AD7B6CFA309} = {DB497936-B1D6-49AD-BBD1-F253EA739B7A}
 		{A4557C0D-F80D-4E59-987A-26E82BF1F4D4} = {0ED5031A-5830-44C3-98BD-4F1659230C57}
-		{09F3EF82-99FD-43B2-93C5-EDB6115D268B} = {D16EF420-4254-40A3-AB18-93C7AA1DAFC0}
+		{09F3EF82-99FD-43B2-93C5-EDB6115D268B} = {DB497936-B1D6-49AD-BBD1-F253EA739B7A}
 		{36278822-327A-4523-BB88-5736D5A662F3} = {0ED5031A-5830-44C3-98BD-4F1659230C57}
+		{DB497936-B1D6-49AD-BBD1-F253EA739B7A} = {D16EF420-4254-40A3-AB18-93C7AA1DAFC0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B72F861C-50E3-4CCB-82A4-2C1DDE7FA90E}
